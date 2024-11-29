@@ -9,7 +9,7 @@
 
       <div [routerLink]="['Information', slide.id]"
         class="cursor-pointer media-h overflow-hidden my-hover object-cover bg-center"
-        [ngStyle]="{'background-image': 'url(' + slide.bg + ')'}">
+        [ngStyle]="{'background-image': 'url(' + slide.bg + ')'}" [attr.loading]="'lazy'">
 
         <div class="w-72 h-full pt-5 bg-black/[.6] max-sm:w-full">
 
