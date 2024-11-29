@@ -8,12 +8,12 @@
       class="text-center m-2 text-white relative bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow">
 
       <div [routerLink]="['Information', slide.id]"
-        class="cursor-pointer media-h overflow-hidden my-hover object-cover bg-center max-sm:h-56"
-        [ngStyle]="{'background-image': 'url(' + slide.bg + ')'}" [attr.loading]="'lazy'">
+        class="cursor-pointer h-96 overflow-hidden my-hover object-cover bg-center max-sm:h-56"
+        [ngStyle]="{'background-image': backgroundSliderSmall ? 'url(' + slide.bgSmall + ')' : 'url(' + slide.bg + ')'}" [attr.loading]="'lazy'">
 
         <div class="w-72 h-full pt-5 bg-black/[.6] max-sm:w-full max-sm:flex max-sm:gap-2">
         
-          <img src="{{slide.img}}" alt="" class="m-auto w-56 object-cover max-sm:w-auto max-sm:h-5/6 max-sm:ml-2">
+          <img src="{{slide.img}}" alt="" class="m-auto w-44 object-cover max-sm:w-auto max-sm:h-5/6 max-sm:ml-2">
         
           <div class="max-sm:w-10/12">
 

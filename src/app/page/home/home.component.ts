@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { RouterLink } from '@angular/router';
 import { SearchComponent } from '../../page-component/search/search.component';
@@ -23,17 +23,21 @@ import { UpdateSavedStatusService } from '../../service/update-saved-status/upda
   styleUrls: ['./home.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
+
 export class HomeComponent implements OnInit {
   
   errorMessage: string = '';
   message: string = '';
   saveMasive: any[] = [];
   sendFulmInfo: any;
+  screenWidth: number = 0;
+  backgroundSliderSmall:boolean = false;
 
   slidesBig: any = [
     {
       name: 'Deadpool & Wolverine',
       bg: 'assets/Deadpool_&_Wolverine_bg.webp',
+      bgSmall: 'assets/Deadpool_&_Wolverine_bg-smal.webp',
       img: 'assets/Deadpool_&_Wolverine.webp',
       id: 'tt6263850',
       type: 'movie',
@@ -42,6 +46,7 @@ export class HomeComponent implements OnInit {
     {
       name: 'Fallout',
       bg: 'assets/Fallout_bg.webp',
+      bgSmall: 'assets/Fallout_bg-smal.webp',
       img: 'assets/Fallout.webp',
       id: 'tt12637874',
       type: 'series',
@@ -50,6 +55,7 @@ export class HomeComponent implements OnInit {
     {
       name: 'Godzilla x Kong: The New Empire',
       bg: 'assets/Godzilla_x_Kong_The_New_Empire_bg.webp',
+      bgSmall: 'assets/Godzilla_x_Kong_The_New_Empire_bg-smal.webp',
       img: 'assets/Godzilla_x_Kong_The_New_Empire.webp',
       id: 'tt14539740',
       type: 'movie',
@@ -58,6 +64,7 @@ export class HomeComponent implements OnInit {
     {
       name: 'Dune: Part Two',
       bg: 'assets/Dune_Part_Two_bg.webp',
+      bgSmall: 'assets/Dune_Part_Two_bg-smal.webp',
       img: 'assets/Dune_Part_Two.webp',
       id: 'tt15239678',
       type: 'movie',
@@ -246,7 +253,42 @@ export class HomeComponent implements OnInit {
 
   constructor(private searchService: SearchService, private addToSavedService: AddToSavedService, private updateSavedStatusService: UpdateSavedStatusService) {}
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+
+    this.screenWidth = event.target.innerWidth;
+
+    if(this.screenWidth > 640) {
+
+      this.backgroundSliderSmall = false;
+
+    } else {
+
+      this.backgroundSliderSmall = true;
+
+    }
+
+
+  }
+
   ngOnInit(): void {
+
+    if (typeof window !== 'undefined') {
+
+      this.screenWidth = window.innerWidth;
+
+      
+    if(this.screenWidth > 640) {
+
+      this.backgroundSliderSmall = false;
+
+    } else {
+
+      this.backgroundSliderSmall = true;
+      
+    }
+
+    }
 
     this.updateSavedStatusService.savedStaus$.subscribe(status => {
   
