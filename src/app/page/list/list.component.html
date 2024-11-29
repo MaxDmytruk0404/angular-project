@@ -1,0 +1,95 @@
+    <div class="my-container flex gap-4 mt-16 pb-4">
+
+        <app-menu class="color-text-switching w-64 max-md:hidden"></app-menu>
+    
+        <div class="w-full color-text-switching relative overflow-hidden">
+    
+            <div class="flex justify-between w-full flex-wrap">
+    
+                <h2 class="color-text-switching text-xl">My Lists</h2>
+    
+                <button (click)="showListForm()" class="my-button px-2 h-7 color-component-switching color-text-switching">Create Lists</button>
+    
+            </div>
+
+            <div class="w-full relative overflow-hidden">
+                <div [ngClass]="listFormClass">
+
+                        <mat-form-field class="example-full-width w-full h-14 text-center outline-none z-20 my-5">
+                            <mat-label class="text-center">List Name</mat-label>
+                            <input class="my-input-color" type="text" matInput (keyup.enter)="createList()" [(ngModel)]="listName">
+                        </mat-form-field>
+
+                        <button
+                        (click)="createList()"
+                            class="block btn-hover text-sm px-6 h-14 border-none color-text-switching color-component-switching cursor-pointer  lg:rounded lg:text-base m-auto">
+                            Create </button>
+                    
+                </div>
+            </div>
+    
+            <p>Found <span>{{myLists.length}}</span></p>
+
+            <div *ngIf="myLists.length !== 0">
+
+                <div *ngFor="let list of myLists" class="mt-5 block-border rounded border-gray-400 p-2">
+
+                    <div class="flex justify-between items-center flex-wrap">
+
+                        <h2 class="text-xl">{{list.listName}}</h2>
+
+                        <div class="flex items-center block-border rounded border-gray-400 overflow-hidden color-component-switching">
+
+                            <p [routerLink]="['List', list.listName]" class="cursor-pointer px-2 py-1 hover:bg-black/30">View all </p>
+                            <p>|</p>
+                            <i (click)="deleteList(list.listName)" class="fa-solid fa-trash hover:text-red-600 cursor-pointer px-1"></i>
+
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="list.listFilms.length !== 0" class="flex gap-2 pt-2">
+
+                        <div *ngFor="let film of list.listFilms.slice(0, sline)" class="relative w-44 h-80 color-text-switching pb-4 color-shadow-switching overflow-hidden bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow cursor-pointer text-center  max-[500px]:h-64 max-[850px]:h-72">
+
+                            <div class="cursor-pointer overflow-hidden group " (click)="navigate(film.id)">
+            
+                                <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 max-[250px]:w-8/12 max-[250px]:group-hover:w-7/12 max-[300px]:w-7/12 max-[300px]:group-hover:w-6/12 max-[370px]:w-10/12 max-[370px]:group-hover:w-8/12 max-[500px]:w-8/12 max-[500px]:group-hover:w-7/12 max-[680px]:w-10/12 max-[680px]:group-hover:w-8/12 max-[950px]:w-10/12 max-[950px]:group-hover:w-8/12 max-lg:w-8/12 max-lg:group-hover:w-7/12 max-[1150px]:w-10/12 max-[1150px]:group-hover:w-8/12" 
+                                *ngIf="film.poster !== 'N/A'" [src]='film.poster' alt="{{film.title}}">
+                                <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 max-[250px]:w-8/12 max-[250px]:group-hover:w-7/12 max-[300px]:w-7/12 max-[300px]:group-hover:w-6/12 max-[370px]:w-10/12 max-[370px]:group-hover:w-8/12 max-[500px]:w-8/12 max-[500px]:group-hover:w-7/12 max-[680px]:w-10/12 max-[680px]:group-hover:w-8/12 max-[950px]:w-10/12 max-[950px]:group-hover:w-8/12 max-lg:w-8/12 max-lg:group-hover:w-7/12 max-[1150px]:w-10/12 max-[1150px]:group-hover:w-8/12" 
+                                *ngIf="film.poster == 'N/A'" src='assets/notFound.webp' alt="{{film.title}}">
+            
+                                <h2 class="p-2 flex-grow max-sm:text-sm">{{film.title}}</h2>
+            
+                                <div class="flex gap-2 flex-wrap justify-center group-hover:translate-y-0 translate-y-28 duration-1000 ease-in-out my-hover-elem max-sm:text-sm">
+                                    <p class="border px-2 py-1 rounded border-zinc-400">{{film.type}}</p>
+                                    <p class="border px-2 py-1 rounded border-zinc-400">{{film.year}}</p>
+                                </div>
+            
+                            </div>
+            
+                        </div> 
+
+                    </div>
+
+                    <div *ngIf="list.listFilms.length == 0">
+                        <p>The list is empty</p>
+                    </div>
+
+                </div>
+
+            </div>
+    
+        </div>
+    
+    </div>
+
+<!-- Повідомлення про помилку -->
+
+<div *ngIf="errorMessage !== ''" class="fixed bottom-5 left-1/4 m-auto bg-red-500 w-1/2 p-4 rounded mt-2 flex justify-center">
+    <p class="text-white">{{errorMessage}}</p>
+  </div>
+
+<!-- Лоадер -->
+
+<div *ngIf="loadding" class="loader"></div>

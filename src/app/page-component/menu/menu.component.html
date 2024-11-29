@@ -1,0 +1,35 @@
+<div *ngIf="userInfo" class="flex gap-2 border-b border-neutral-500 pb-4">
+
+    <div class="bg-slate-800 w-14 h-14 border-neutral-500 border-solid border-2">
+        <img [src]="userInfo.img ? userInfo.img : 'assets/user-img.png'" alt="" class="w-full h-full"
+            onerror="this.style.visibility='hidden'">
+    </div>
+
+    <div>
+        <h2>{{userInfo.name}}</h2>
+        <p class="text-xs">{{userInfo.email}}</p>
+    </div>
+
+</div>
+
+<div (click)="navigate('/Profile')"
+    class="cursor-pointer px-4 py-2 flex gap-4 items-center my-2 hover:bg-white/20 hover:text-gray-900">
+    <i class="fa-solid fa-user"></i>
+    <h2>Profile</h2>
+</div>
+
+<div (click)="navigate('/MySaves')"
+    class="cursor-pointer px-4 py-2 flex gap-4 items-center my-2 hover:bg-white/20 hover:text-gray-900">
+    <i class="fa-solid fa-bookmark"></i>
+    <h2>Saved</h2>
+</div>
+
+<div (click)="navigate('/MyLists')" class="cursor-pointer px-4 py-2 flex gap-4 items-center my-2 hover:bg-white/20 hover:text-gray-900">
+    <i class="fa-solid fa-list"></i>
+    <h2>My lists</h2>
+</div>
+
+<div (click)="logout()" class="cursor-pointer px-4 py-2 flex gap-4 items-center my-2 hover:bg-white/20 hover:text-red-800">
+    <i class="fa-solid fa-right-from-bracket"></i>
+    <h2>Sign out</h2>
+</div>

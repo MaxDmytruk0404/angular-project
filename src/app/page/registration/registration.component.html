@@ -1,0 +1,32 @@
+<div class="my-container">
+
+    <form action=""
+        class="registration-box max-w-96 m-auto p-5 mt-16 rounded-xl color-form-shadow-swithing color-text-switching">
+        <h2 class="text-2xl mb-8">Registration</h2>
+
+        <mat-form-field class="example-full-width w-full h-14 text-center outline-none z-20 relative mb-4">
+            <mat-label class="text-center">Your email</mat-label>
+            <input class="my-input-color" matInput type="email" name="email" [(ngModel)]="email">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width w-full h-14 text-center outline-none z-20 relative">
+            <mat-label class="text-center">Password</mat-label>
+            <input class="my-input-color" type="password" name="password" [(ngModel)]="password" matInput>
+        </mat-form-field>
+
+        <p *ngIf="validateMassage != ''" class="text-rose-500 text-base mt-2">*{{validateMassage}}*</p>
+
+        <button
+            class="my-button block m-auto w-full h-8 rounded border-none color-component-switching cursor-pointer mt-6 text-base"
+            type="button" (click)="registration()">Registration</button>
+
+        <h3 class="text-sm color-link-text-switching text-center mt-4">If you have an account <a
+                class="color-link-switching border-color hover:border-b-2" routerLink="/Login">Login</a></h3>
+
+    </form>
+</div>
+
+<!-- Повідомлення про помилку -->
+<div *ngIf="errorMessage" class="fixed bottom-5 left-1/4 m-auto bg-red-500 w-1/2 p-4 rounded mt-2 flex justify-center">
+    <p class="text-white">{{errorMessage}}</p>
+</div>

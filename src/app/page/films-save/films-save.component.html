@@ -1,0 +1,34 @@
+<div class="my-container flex gap-2 mt-16 pb-4">
+
+    <app-menu class="color-text-switching w-64 max-md:hidden"></app-menu>
+
+    <div class="w-full flex gap-4 flex-wrap justify-center">
+
+            <div class="relative" *ngFor="let film of filmSave" class="relative h-auto color-text-switching pb-4 color-shadow-switching overflow-hidden bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow cursor-pointer text-center w-56 max-[375px]:w-10/12 max-[470px]:w-40  max-sm:w-52 max-md:w-72 max-lg:w-64">
+
+                <div class="cursor-pointer h-96 overflow-hidden group max-sm:h-96 max-[375px]:h-auto max-[470px]:h-80" [routerLink]="['/Information', film.id]">
+
+                    <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 max-[375px]:w-9/12  max-[375px]:group-hover:w-9/12 max-sm:w-full  max-sm:group-hover:w-11/12 max-md:w-9/12 max-lg:w-10/12 max-lg:group-hover:w-8/12" 
+                    *ngIf="film.poster !== 'N/A'" [src]='film.poster' alt="{{film.title}}">
+                    <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 max-[375px]:w-9/12  max-[375px]:group-hover:w-9/12 max-sm:w-full  max-sm:group-hover:w-11/12 max-md:w-9/12 max-lg:w-10/12 max-lg:group-hover:w-8/12" 
+                    *ngIf="film.poster == 'N/A'" src='assets/notFound.webp' alt="{{film.title}}">
+
+                    <h2 class="p-2 flex-grow max-sm:text-sm">{{film.title}}</h2>
+
+                    <div class="flex gap-2 flex-wrap justify-center group-hover:translate-y-0 translate-y-28 duration-1000 ease-in-out my-hover-elem max-sm:text-sm">
+                        <p class="border px-2 py-1 rounded border-zinc-400">{{film.type}}</p>
+                        <p class="border px-2 py-1 rounded border-zinc-400">{{film.year}}</p>
+                    </div>
+
+                </div>
+
+               <div class="absolute bg-red-500 w-8 h-8 top-2 right-2 flex justify-center items-center rounded-full">
+                <i (click)="removeFilm(film.id)" class="fa-solid fa-xmark text-lg  text-white cursor-pointer"></i>
+               </div>
+            </div> 
+
+    </div>
+
+</div>
+
+<div *ngIf="loadding == true" class="loader"></div>

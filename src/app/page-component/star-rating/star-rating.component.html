@@ -1,0 +1,4 @@
+<i class="fa-solid fa-star" *ngFor="let star of maxRatingArr; let index = index" 
+    (mouseenter)="HandleMouseEnter(index)" (mouseleave)="HandleMouseLeave()"
+    (click)="Rating(index)"
+    [ngClass]="{'text-yellow-400': SelectedStar > index}"></i>

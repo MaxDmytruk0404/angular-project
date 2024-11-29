@@ -1,0 +1,51 @@
+<div class="my-container mt-5 color-text-switching pb-2" *ngIf="myList">
+    <div class="flex justify-between">
+        <h2 class="text-3xl">{{listName}}</h2>
+        <button class="my-button px-2 block-border rounded border-gray-400 color-component-switching" routerLink="/MyLists">Go back</button>
+    </div>
+    <p>Title <span>{{myList.listFilms.length}}</span></p>
+
+    <div *ngIf="myList.listFilms.length !== 0">
+
+            <div class="flex flex-wrap gap-2 justify-center pt-2">
+
+                <div *ngFor="let film of myList.listFilms"
+                    class="elative h-auto color-text-switching pb-4 color-shadow-switching overflow-hidden bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow cursor-pointer text-center w-56 max-[375px]:w-10/12 max-[470px]:w-40  max-sm:w-52 max-md:w-72 max-lg:w-64">
+            
+                    <div (click)="navigate(film.id)"
+                        class="cursor-pointer h-96 overflow-hidden group max-sm:h-96 max-[375px]:h-auto max-[470px]:h-80">
+            
+                        <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 max-[375px]:w-9/12  max-[375px]:group-hover:w-9/12 max-sm:w-full  max-sm:group-hover:w-11/12 max-md:w-8/12 max-md:group-hover:w-7/12 max-lg:w-10/12 max-lg:group-hover:w-8/12"
+                            *ngIf="film.poster !== 'N/A'" [src]='film.poster' alt="{{film.title}}">
+            
+                        <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 max-[375px]:w-9/12  max-[375px]:group-hover:w-9/12 max-sm:w-full  max-sm:group-hover:w-11/12 max-md:w-8/12 max-md:group-hover:w-7/12 max-lg:w-10/12 max-lg:group-hover:w-8/12"
+                            *ngIf="film.poster == 'N/A'" src='assets/notFound.webp' alt="{{film.title}}">
+            
+                        <h2 class="p-2 flex-grow max-sm:text-sm ">{{film.title}}</h2>
+            
+                        <div
+                            class="flex gap-2 flex-wrap justify-center group-hover:translate-y-0 translate-y-28 duration-1000 ease-in-out my-hover-elem max-sm:text-sm">
+                            <p class="border px-2 py-1 rounded border-zinc-400">{{film.type}}</p>
+                            <p class="border px-2 py-1 rounded border-zinc-400">{{film.year}}</p>
+                        </div>
+            
+                    </div>
+                    
+                    <div (click)="removeFilm(film.id)"
+                        class="absolute color-component-switching color-text-switching w-8 h-8 top-2 right-2 flex justify-center items-center rounded-full hover:bg-red-600 group">
+                        <i class="fa-solid fa-xmark text-lg cursor-pointer group-hover:text-white"></i>
+                    </div>
+            
+                </div>
+            
+            </div>
+
+    </div>
+
+    <div *ngIf="myList.listFilms.length == 0">
+        <p class="text-center pt-8 text-xl">The list is empty</p>
+    </div>
+
+</div>
+
+<div *ngIf="loadding" class="loader"></div>

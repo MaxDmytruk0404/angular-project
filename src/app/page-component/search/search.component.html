@@ -1,0 +1,63 @@
+<!-- Пошукова система -->
+
+<div class="flex items-center mb-8 lg:gap-8 mt-5">
+
+    <button aria-label="button that searches for movies" *ngIf="filterVisible" (click)="filterParamVisible ? filterParamVisible = false : filterParamVisible = true"
+        class="block search-btn text-sm px-6 h-14 border-none color-text-switching color-component-switching cursor-pointer lg:rounded lg:text-base"><i
+            class="fa-solid fa-filter"></i></button>
+        
+    <div class="w-full relative">
+
+        <!-- input пошуку --> 
+
+        <mat-form-field class="example-full-width w-full h-14 text-center outline-none z-20 relative">
+            <mat-label class="text-center">Enter the name of the movie</mat-label>
+            <input class="my-input-color" (keyup)="onKeyUp($event)" (blur)="onBlur($event)" (keyup.enter)="search()" [(ngModel)]="filmName"
+            type="text" matInput>
+          </mat-form-field>
+
+        <!-- фільми які зявляються після введення назви в input -->
+
+        <div *ngIf="serchWindowVisble"
+            ngClass="w-full absolute top-full color-component-switching py-2 px-4 z-10 ">
+
+            <div *ngFor="let film of filmsVisiabel; let i = index" class="overflow-hidden my-hight-serch-block relative">
+
+                <h2 [routerLink]="['Information', film.imdbID]" (click)="removeDarcnes()"  
+                    (mouseenter)="onHover(i, true)" (mouseleave)="onHover(i, false)"
+                    class="search-result color-text-switching px-1 cursor-pointer overflow-hidden z-20 relative color-component-switching">{{film.Title}}</h2>
+            
+                <div class="flex hover-block" [ngClass]="{'is-visible': isHovered[i]}">
+                    <img [src]='getSerchFilmPoster(film.Poster)' class="h-full" alt="">
+                    <div class="color-text-switching px-2">
+                        <h2>Year: {{film.Year}}</h2>
+                        <h2>Type: {{film.Type}}</h2>
+                    </div>
+                </div>
+            
+            </div>
+
+        </div>
+
+    </div>
+    
+    <!-- Кнопка пошуку -->
+    <button aria-label="button that searches for movies" (click)="search()"
+        class="block btn-hover text-sm px-6 h-14 border-none color-text-switching color-component-switching cursor-pointer  lg:rounded lg:text-base"><i
+            class="fa-solid fa-magnifying-glass"></i></button>
+</div>
+
+<!-- Фільтер для знадених фільмів за назвою -->
+
+<div *ngIf="filterParamVisible" class="flex mb-8 gap-2 flex-col">
+    <div class="flex gap-2 ">
+        <button *ngFor="let button of filterBtns" (click)="setActiveBtnIMDb(button)"
+        [ngClass]="button.isActive ?  filterAtive : filterNoAtive">{{button.text}}</button>
+    </div>
+</div>
+
+<!-- Повідомлення про помилку -->
+<div *ngIf="errorMessage"
+    class="error fixed bottom-5 left-1/4 m-auto bg-red-500 w-1/2 p-4 rounded mt-2 flex justify-center">
+    <p class="text-white">{{errorMessage}}</p>
+</div>

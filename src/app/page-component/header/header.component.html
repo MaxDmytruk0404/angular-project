@@ -1,0 +1,65 @@
+<header class="color-component-switching py-3 color-text-switching sm:py-3">
+
+    <nav>
+
+        <div class="my-container flex justify-between relative">
+
+            <a routerLink="" (click)="filterVisibelNone()"><i class="fa-solid fa-film"></i></a>
+
+            <ul class="hidden gap-4 sm:flex" *ngIf="userFound == 'false'">
+                <li><a class="pb-1" routerLink="Popular">Most Popular</a></li>
+                <li><a class="pb-1" routerLink="Login">Login</a></li>
+                <li><a class="pb-1" routerLink="Registration">Registration</a></li>
+                <li class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i
+                        class="fa-solid fa-moon"></i></li>
+                <li class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i
+                        class="fa-solid fa-sun"></i></li>
+            </ul>
+
+            <ul class="hidden gap-4 sm:flex" *ngIf="userFound == 'true'">
+                <li><a class="pb-1" routerLink="Popular">Most Popular</a></li>
+                <li class="cursor-pointer" (click)="toggleMenu($event)"><i class="fa-solid fa-user"></i></li>
+                <li class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i
+                        class="fa-solid fa-moon"></i></li>
+                <li class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i
+                        class="fa-solid fa-sun"></i></li>
+            </ul>
+
+            <!-- Для розширення екрану 640 px і менше -->
+            <ul class="flex gap-4 sm:hidden" *ngIf="userFound == 'false'">
+                <li><a routerLink="Popular"><i class="fa-solid fa-fire"></i></a></li>
+                <li class="cursor-pointer"><a class="pb-1" routerLink="Login"><i class="fa-solid fa-user"></i></a></li>
+                <li class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i
+                        class="fa-solid fa-moon"></i></li>
+                <li class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i
+                        class="fa-solid fa-sun"></i></li>
+            </ul>
+
+            <ul class="flex gap-4 sm:hidden" *ngIf="userFound == 'true'">
+                <li><a routerLink="Popular"><i class="fa-solid fa-fire"></i></a></li>
+                <li class="cursor-pointer" (click)="toggleMenu($event)"><i class="fa-solid fa-user"></i></li>
+                <li class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i
+                        class="fa-solid fa-moon"></i></li>
+                <li class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i
+                        class="fa-solid fa-sun"></i></li>
+            </ul>
+
+            <!-- Меню -->
+            <div *ngIf="menuIsOpen" ngClass="absolute bg-black/70  h-auto w-96 top-12 text-white/70 right-0 z-30 p-2 max-[500px]:w-full" (click)="$event.stopPropagation()">
+
+                <div class="relative">
+
+                    <button class="absolute top-0 right-0" (click)="menuIsOpen = false"><i class="fa-solid fa-xmark"></i></button>
+
+                    <app-menu></app-menu>
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+</header>

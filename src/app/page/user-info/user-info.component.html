@@ -1,0 +1,74 @@
+<div class="my-container pb-2">
+
+    <div class="w-full m-auto mt-16 color-text-switching flex gap-4">
+
+        <!-- Бокова колонка -->
+        <div class="w-64 max-md:hidden">
+
+            <app-menu></app-menu>
+
+
+        </div>
+        
+        <!-- Головний контент -->
+        <div class="w-full relative">
+
+            <img class="w-full h-72 object-cover brightness-50" src="assets/profile-bg.webp" alt="">
+
+            <div class="flex gap-3 items-end absolute top-64 left-8">
+
+                <img [src]="userInfo.img ? userInfo.img : comonUserImg" alt="ProfilePhoto" class="w-32 h-auto rounded">
+
+                <div>
+
+                    <h2 class="text-2xl">{{userInfo.name}}</h2>
+                    <p class="text-xs">{{userInfo.email}}</p>
+
+                </div>
+
+            </div>
+
+            <div class="mt-32">
+
+                <div class="flex justify-between mb-2">
+                    <h2 class="text-lg">MySaved</h2>
+                    <div class="flex items-center block-border rounded border-gray-400 overflow-hidden color-component-switching">
+
+                        <p routerLink="/MySaves" class="cursor-pointer px-2 py-1 hover:bg-black/30">View all </p>
+
+                    </div>
+                </div>
+
+                <div class="flex gap-2">
+
+                    <div *ngFor="let film of filmSave.slice(0, sline)" class="relative w-44 h-80 color-text-switching pb-4 color-shadow-switching overflow-hidden bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow cursor-pointer text-center  max-[500px]:h-64 max-[850px]:h-72">
+
+                        <div class="cursor-pointer overflow-hidden group " (click)="navigate(film.id)">
+        
+                            <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 max-[250px]:w-8/12 max-[250px]:group-hover:w-7/12 max-[300px]:w-7/12 max-[300px]:group-hover:w-6/12 max-[370px]:w-10/12 max-[370px]:group-hover:w-8/12 max-[500px]:w-8/12 max-[500px]:group-hover:w-7/12 max-[680px]:w-10/12 max-[680px]:group-hover:w-8/12 max-[950px]:w-10/12 max-[950px]:group-hover:w-8/12 max-lg:w-8/12 max-lg:group-hover:w-7/12 max-[1150px]:w-10/12 max-[1150px]:group-hover:w-8/12" 
+                            *ngIf="film.poster !== 'N/A'" [src]='film.poster' alt="{{film.title}}">
+                            <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 max-[250px]:w-8/12 max-[250px]:group-hover:w-7/12 max-[300px]:w-7/12 max-[300px]:group-hover:w-6/12 max-[370px]:w-10/12 max-[370px]:group-hover:w-8/12 max-[500px]:w-8/12 max-[500px]:group-hover:w-7/12 max-[680px]:w-10/12 max-[680px]:group-hover:w-8/12 max-[950px]:w-10/12 max-[950px]:group-hover:w-8/12 max-lg:w-8/12 max-lg:group-hover:w-7/12 max-[1150px]:w-10/12 max-[1150px]:group-hover:w-8/12" 
+                            *ngIf="film.poster == 'N/A'" src='assets/notFound.webp' alt="{{film.title}}">
+        
+                            <h2 class="p-2 flex-grow max-sm:text-sm">{{film.title}}</h2>
+        
+                            <div class="flex gap-2 flex-wrap justify-center group-hover:translate-y-0 translate-y-28 duration-1000 ease-in-out my-hover-elem max-sm:text-sm">
+                                <p class="border px-2 py-1 rounded border-zinc-400">{{film.type}}</p>
+                                <p class="border px-2 py-1 rounded border-zinc-400">{{film.year}}</p>
+                            </div>
+        
+                        </div>
+        
+                    </div> 
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Лоадер -->
+
+<div *ngIf="loadding" class="loader"></div>
