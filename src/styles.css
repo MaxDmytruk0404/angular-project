@@ -1,7 +1,7 @@
 
 
 body[data-theme="night"]{
-    --color-text: #7b899d;
+    --color-text: #b5c2d4;
     --color-bg: #0f172a;
     --color-component: #1e293b;
     --color-link-text: rgba(255, 255, 255, 0.4);
@@ -19,7 +19,7 @@ body[data-theme="night"]{
     --opacity-darkening: #01010100;
   }
   body[data-theme="nightDarkening"]{
-    --color-text: #7b899d;
+    --color-text: #b5c2d4;
     --color-bg: #0f172a;
     --color-component: #1e293b;
     --color-link-text: rgba(255, 255, 255, 0.4);

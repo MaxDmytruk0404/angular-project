@@ -8,21 +8,26 @@
       class="text-center m-2 text-white relative bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow">
 
       <div [routerLink]="['Information', slide.id]"
-        class="cursor-pointer media-h overflow-hidden my-hover object-cover bg-center"
+        class="cursor-pointer media-h overflow-hidden my-hover object-cover bg-center max-sm:h-56"
         [ngStyle]="{'background-image': 'url(' + slide.bg + ')'}" [attr.loading]="'lazy'">
 
-        <div class="w-72 h-full pt-5 bg-black/[.6] max-sm:w-full">
+        <div class="w-72 h-full pt-5 bg-black/[.6] max-sm:w-full max-sm:flex max-sm:gap-2">
+        
+          <img src="{{slide.img}}" alt="" class="m-auto w-56 object-cover max-sm:w-auto max-sm:h-5/6 max-sm:ml-2">
+        
+          <div class="max-sm:w-10/12">
 
-          <img src="{{slide.img}}" alt="" class="m-auto w-56 object-cover">
-          <h2 class="p-2 flex-grow ">{{slide.name}}</h2>
-
-          <div class="flex gap-2 flex-wrap justify-center my-hover-elem">
-
-            <p class="border px-2 py-1 rounded border-white">{{slide.type}}</p>
-            <p class="border px-2 py-1 rounded border-white">{{slide.year}}</p>
-
+            <h2 class="p-2 flex-grow max-sm:text-xl max-sm:text-left">{{slide.name}}</h2>
+        
+            <div class="flex gap-2 flex-wrap justify-center my-hover-elem max-sm:justify-start">
+        
+              <p class="border px-2 py-1 rounded border-white">{{slide.type}}</p>
+              <p class="border px-2 py-1 rounded border-white">{{slide.year}}</p>
+        
+            </div>
+        
           </div>
-
+        
         </div>
 
       </div>
@@ -63,7 +68,7 @@
 
           <div [routerLink]="['Information', slide.id]" class="cursor-pointer pt-5 px-2 h-96 overflow-hidden group max-[300px]:h-64 max-[470px]:h-80 max-[750px]:h-80">
 
-            <img src="{{slide.img}}" alt="" class="m-auto w-11/12 object-cover group-hover:w-10/12 ease-in-out duration-1000 max-[375px]:w-7/12  max-[375px]:group-hover:w-6/12 max-[400px]:w-full max-[400px]:group-hover:w-11/12 max-[450px]:w-11/12 max-[450px]:group-hover:w-10/12 max-[500px]:w-10/12 max-[500px]:group-hover:w-9/12 max-[550px]:w-9/12 max-[550px]:group-hover:w-8/12 max-[600px]:w-8/12 max-[600px]:group-hover:w-7/12 max-sm:w-11/12 max-sm:group-hover:w-10/12 max-[750px]:w-9/12 max-[750px]:group-hover:w-8/12 max-[800px]:w-11/12 max-[800px]:group-hover:w-10/12 max-[900px]:w-10/12 max-[900px]:group-hover:w-9/12 max-[950px]:w-9/12 max-[950px]:group-hover:w-8/12 max-lg:w-11/12 max-lg:group-hover:w-10/12 max-[1150px]:w-10/12 max-[1150px]:group-hover:w-9/12" >
+            <img src="{{slide.img}}" alt="" class="m-auto w-52 object-cover group-hover:w-44 ease-in-out duration-1000 max-[300px]:w-32 max-[300px]:group-hover:w-24 max-[750px]:w-40 max-[750px]:group-hover:w-32 max-md:w-48 max-md:group-hover:w-40" >
            
             <h2 class="p-2 flex-grow max-[300px]:text-sm">{{slide.name}}</h2>
 
@@ -104,7 +109,7 @@
 
           <div [routerLink]="['Information', slide.id]" class="cursor-pointer pt-5 px-2 h-96 overflow-hidden group max-[300px]:h-64 max-[470px]:h-80 max-[750px]:h-80">
 
-            <img src="{{slide.img}}" alt="" class="m-auto w-11/12 object-cover group-hover:w-10/12 ease-in-out duration-1000 max-[375px]:w-7/12  max-[375px]:group-hover:w-6/12 max-[400px]:w-full max-[400px]:group-hover:w-11/12 max-[450px]:w-11/12 max-[450px]:group-hover:w-10/12 max-[500px]:w-10/12 max-[500px]:group-hover:w-9/12 max-[550px]:w-9/12 max-[550px]:group-hover:w-8/12 max-[600px]:w-8/12 max-[600px]:group-hover:w-7/12 max-sm:w-11/12 max-sm:group-hover:w-10/12 max-[750px]:w-9/12 max-[750px]:group-hover:w-8/12 max-[800px]:w-11/12 max-[800px]:group-hover:w-10/12 max-[900px]:w-10/12 max-[900px]:group-hover:w-9/12 max-[950px]:w-9/12 max-[950px]:group-hover:w-8/12 max-lg:w-11/12 max-lg:group-hover:w-10/12 max-[1150px]:w-10/12 max-[1150px]:group-hover:w-9/12" >
+            <img src="{{slide.img}}" alt="" class="m-auto w-52 object-cover group-hover:w-44 ease-in-out duration-1000 max-[300px]:w-32 max-[300px]:group-hover:w-24 max-[750px]:w-40 max-[750px]:group-hover:w-32 max-md:w-48 max-md:group-hover:w-40" >
            
             <h2 class="p-2 flex-grow max-[300px]:text-sm">{{slide.name}}</h2>
 

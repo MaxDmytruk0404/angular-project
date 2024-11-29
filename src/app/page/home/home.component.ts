@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
     },
     {
       name: 'Godzilla x Kong: The New Empire',
-      bg: 'assets/Godzilla_x_Kong_The_New_Empire_bg.jpeg',
+      bg: 'assets/Godzilla_x_Kong_The_New_Empire_bg.webp',
       img: 'assets/Godzilla_x_Kong_The_New_Empire.webp',
       id: 'tt14539740',
       type: 'movie',

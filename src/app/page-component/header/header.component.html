@@ -4,43 +4,43 @@
 
         <div class="my-container flex justify-between relative">
 
-            <a routerLink="" (click)="filterVisibelNone()"><i class="fa-solid fa-film"></i></a>
+            <a aria-label="Link to the main page" routerLink="" (click)="filterVisibelNone()"><i class="fa-solid fa-film"></i></a>
 
             <ul class="hidden gap-4 sm:flex" *ngIf="userFound == 'false'">
                 <li><a class="pb-1" routerLink="Popular">Most Popular</a></li>
                 <li><a class="pb-1" routerLink="Login">Login</a></li>
                 <li><a class="pb-1" routerLink="Registration">Registration</a></li>
-                <li class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i
+                <li aria-label="switching to dark theme" class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i
                         class="fa-solid fa-moon"></i></li>
-                <li class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i
+                <li aria-label="switching to light theme" class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i
                         class="fa-solid fa-sun"></i></li>
             </ul>
 
             <ul class="hidden gap-4 sm:flex" *ngIf="userFound == 'true'">
                 <li><a class="pb-1" routerLink="Popular">Most Popular</a></li>
-                <li class="cursor-pointer" (click)="toggleMenu($event)"><i class="fa-solid fa-user"></i></li>
-                <li class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i
+                <li aria-label="user menu" class="cursor-pointer" (click)="toggleMenu($event)"><i class="fa-solid fa-user"></i></li>
+                <li aria-label="switching to dark theme" class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i
                         class="fa-solid fa-moon"></i></li>
-                <li class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i
+                <li aria-label="switching to light theme" class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i
                         class="fa-solid fa-sun"></i></li>
             </ul>
 
             <!-- Для розширення екрану 640 px і менше -->
             <ul class="flex gap-4 sm:hidden" *ngIf="userFound == 'false'">
-                <li><a routerLink="Popular"><i class="fa-solid fa-fire"></i></a></li>
-                <li class="cursor-pointer"><a class="pb-1" routerLink="Login"><i class="fa-solid fa-user"></i></a></li>
-                <li class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i
+                <li aria-label="link to movie ratings page"><a routerLink="Popular"><i class="fa-solid fa-fire"></i></a></li>
+                <li aria-label="link to login page" class="cursor-pointer"><a class="pb-1" routerLink="Login"><i class="fa-solid fa-user"></i></a></li>
+                <li aria-label="switching to dark theme" class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i
                         class="fa-solid fa-moon"></i></li>
-                <li class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i
+                <li aria-label="switching to light theme" class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i
                         class="fa-solid fa-sun"></i></li>
             </ul>
 
             <ul class="flex gap-4 sm:hidden" *ngIf="userFound == 'true'">
-                <li><a routerLink="Popular"><i class="fa-solid fa-fire"></i></a></li>
-                <li class="cursor-pointer" (click)="toggleMenu($event)"><i class="fa-solid fa-user"></i></li>
-                <li class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i
+                <li aria-label="link to movie ratings page"><a routerLink="Popular"><i class="fa-solid fa-fire"></i></a></li>
+                <li aria-label="user menu" class="cursor-pointer" (click)="toggleMenu($event)"><i class="fa-solid fa-user"></i></li>
+                <li aria-label="switching to dark theme" class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i
                         class="fa-solid fa-moon"></i></li>
-                <li class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i
+                <li aria-label="switching to light theme" class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i
                         class="fa-solid fa-sun"></i></li>
             </ul>
 

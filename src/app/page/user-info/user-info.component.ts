@@ -16,7 +16,7 @@ import { Router, RouterLink } from '@angular/router';
 export class UserInfoComponent implements OnInit {
 
   userProfile: any;
-  comonUserImg: string = 'assets/user-img.png';
+  comonUserImg: string = 'assets/user-img.webp';
   userName: string = '';
 
   loadding: boolean = false;
