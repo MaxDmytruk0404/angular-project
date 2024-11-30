@@ -31,6 +31,7 @@ export class FilmInfoComponent implements OnInit {
   listDisplay: boolean = false;
   myLists: any = [];
   loadding: boolean = false;
+  userLoadded: string = 'false';
   message: string = '';
 
   constructor(
@@ -63,6 +64,10 @@ export class FilmInfoComponent implements OnInit {
   getInfo() {
 
     if (typeof window !== 'undefined' && window.localStorage) {
+
+      this.userLoadded = localStorage.getItem('logged') || '';
+
+     if (this.userLoadded == 'true') {
 
       let localInfo = localStorage.getItem('userInfo') || '';
       this.userLocalInfo = JSON.parse(localInfo);
@@ -101,6 +106,8 @@ export class FilmInfoComponent implements OnInit {
         }
   
       })
+
+     }
 
     }
   }

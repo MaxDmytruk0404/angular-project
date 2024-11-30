@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class DataOperationService {
 
   constructor(private http: HttpClient) { }
 
-  private api = "http://localhost:3000/app";
+  private api = environment.apiHostURL;
 
 
   cheackEmail(email: string): Observable<any> {

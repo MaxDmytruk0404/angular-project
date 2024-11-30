@@ -29,11 +29,15 @@ export class ComentariesComponent implements OnInit{
 
       this.userLoadded = localStorage.getItem('logged') || '';
 
-      const userInfoLocal = localStorage.getItem('userInfo') || '';
-      this.userInfo = JSON.parse(userInfoLocal);
+      if (this.userLoadded == 'true') {
 
-      if (this.userInfo.img == '') {
-        this.userInfo.img = 'assets/user-img.png'
+        const userInfoLocal = localStorage.getItem('userInfo') || '';
+        this.userInfo = JSON.parse(userInfoLocal);
+
+        if (this.userInfo.img == '') {
+          this.userInfo.img = 'assets/user-img.png';
+        }
+
       }
 
     }

@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   message: string = '';
   saveMasive: any[] = [];
   sendFulmInfo: any;
+  userLoadded: string = 'false';
 
   slidesBig: any = [
     {
@@ -248,6 +249,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if (typeof window !== 'undefined' && window.localStorage) { 
+
+      this.userLoadded = localStorage.getItem('logged') || 'false';
+
+    }
+
     this.updateSavedStatusService.savedStaus$.subscribe(status => {
   
       if (status !== '') {
@@ -304,16 +311,28 @@ export class HomeComponent implements OnInit {
   // Додавання фільму в збереженні
 
   sendInfo(film: any) {
-    
-    const filmSaveInfo = {
-      poster: film.img,
-      title: film.name,
-      type: film.type,
-      year: film.year,
-      id: film.id,
-    };
-    
-    this.addToSavedService.sendInfo(filmSaveInfo);
+
+    if (this.userLoadded == 'true') {
+
+      const filmSaveInfo = {
+        poster: film.img,
+        title: film.name,
+        type: film.type,
+        year: film.year,
+        id: film.id,
+      };
+      
+      this.addToSavedService.sendInfo(filmSaveInfo);
+
+    } else {
+
+      this.errorMessage = `To save the movie you need to log in to your account.`;
+  
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 2800);
+      
+    }
 
   }
 }

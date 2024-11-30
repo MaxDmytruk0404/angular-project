@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../service/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
-import { UpdateMenuStatusService } from '../../update-menu-status/update-menu-status.service';
+import { UpdateMenuStatusService } from '../../service/update-menu-status/update-menu-status.service';
 
 @Component({
   selector: 'app-menu',

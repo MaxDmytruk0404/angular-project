@@ -2,6 +2,7 @@ export const environment = {
     production: false,
     ApiOMDB: 'https://www.omdbapi.com/',
     ApiTMDB : 'https://api.themoviedb.org/3/',
+    apiHostURL: 'http://localhost:3000/app',
     firebase : {
         apiKey: "AIzaSyCPtYnBGSS4L8Q6AfLXGJHrFi_yaa9zzWw",
         authDomain: "angularproject-ecfce.firebaseapp.com",

@@ -5,7 +5,7 @@ import { SearchService } from '../../service/search/search.service';
 import { Subscription } from 'rxjs';
 import { HeaderUpdateService } from '../../service/header-update/header-update.service';
 import { MenuComponent } from '../menu/menu.component';
-import { UpdateMenuStatusService } from '../../update-menu-status/update-menu-status.service';
+import { UpdateMenuStatusService } from '../../service/update-menu-status/update-menu-status.service';
 
 @Component({
   selector: 'app-header',

@@ -29,10 +29,10 @@ export class FilmsComponent implements OnInit {
   filmId: string = '';
   saveMasive: any[] = [];
   api: string = environment.ApiOMDB;
+  userLoadded: string = 'false';
   sendFulmInfo: any;
-  // categoty
-
   searchProces: boolean = false;
+
 
   constructor(
     private filmsServiсe: FilmsService,
@@ -44,36 +44,49 @@ export class FilmsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.updateSavedStatusService.savedStaus$.subscribe(status => {
-  
-      if (status !== '') {
-  
-        let newStatus = status.includes('already added');
-  
-        if (newStatus) {
+    if (typeof window !== 'undefined' && window.localStorage) { 
 
-          this.errorMessage = `${status}`;
-  
-          setTimeout(() => {
-            this.errorMessage = '';
-          }, 2800);
-  
-        } else {
+      this.userLoadded = localStorage.getItem('logged') || 'false';
 
-          this.message = `${status} added to Saved`;
-  
-          setTimeout(() => {
-            this.message = '';
-          }, 2800);
+      if (this.userLoadded == 'true') {
 
-        }
+        this.updateSavedStatusService.savedStaus$.subscribe(status => {
   
-        setTimeout(() => {
-          this.updateSavedStatusService.resetSavedStatus();
-        }, 3000); 
+          if (status !== '') {
+      
+            let newStatus = status.includes('already added');
+      
+            if (newStatus) {
+    
+              this.errorMessage = `${status}`;
+      
+              setTimeout(() => {
+                this.errorMessage = '';
+              }, 2800);
+      
+            } else {
+    
+              this.message = `${status} added to Saved`;
+      
+              setTimeout(() => {
+                this.message = '';
+              }, 2800);
+    
+            }
+      
+            setTimeout(() => {
+              this.updateSavedStatusService.resetSavedStatus();
+            }, 3000); 
+    
+          }
+
+        });
 
       }
-    });
+
+    }
+    
+    
 
     this.route.params.subscribe((params) => {
 
@@ -265,15 +278,27 @@ export class FilmsComponent implements OnInit {
   // Додавання фільму в збережені
 
   sendInfo(film: any) {
-    const filmSaveInfo = {
-      poster: film.Poster,
-      title: film.Title,
-      type: film.Type,
-      year: film.Year,
-      id: film.imdbID,
-    };
-    
-    this.addToSavedService.sendInfo(filmSaveInfo);
+
+    if (this.userLoadded == 'true') {
+
+      const filmSaveInfo = {
+        poster: film.img,
+        title: film.name,
+        type: film.type,
+        year: film.year,
+        id: film.id,
+      };
+      
+      this.addToSavedService.sendInfo(filmSaveInfo);
+
+    } else {
+      this.errorMessage = `To save the movie you need to log in to your account.`;
+  
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 2800);
+    }
+
   }
 
 }

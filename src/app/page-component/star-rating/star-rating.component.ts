@@ -13,6 +13,9 @@ import { DataOperationService } from '../../service/dataOperation/data-operation
 
 export class StarRatingComponent implements OnInit{
 
+  userLoadded: string = 'false';
+  errorMessage: string = '';
+
   @Input() maxRating = 10
   maxRatingArr: any = [];
   @Input() SelectedStar = 0;
@@ -24,13 +27,30 @@ export class StarRatingComponent implements OnInit{
   constructor(private dataOperationServise: DataOperationService) {}
 
  ngOnInit(): void {
+
    this.maxRatingArr = Array(this.maxRating).fill(0);
-   this.RaitingCheck()
+
+   if (typeof window !== 'undefined' && window.localStorage) {
+
+    this.userLoadded = localStorage.getItem('logged') || '';
+ 
+    if (this.userLoadded == 'true') {
+
+      this.RaitingCheck();
+
+    }
+
+   }
+
  }
+
+ // показ жовтих зірок при наведені 
 
  HandleMouseEnter(index: number) {
   this.SelectedStar = index + 1;
  }
+
+ // зникнення жовтих зірок при відводення мишки від них 
 
  HandleMouseLeave() {
 
@@ -42,12 +62,27 @@ export class StarRatingComponent implements OnInit{
 
  }
 
- Rating(index: number) {
+ // Оцінка
 
-  this.SelectedStar = index + 1;
-  this.previousSelection = this.SelectedStar;
-  this.onRating.emit(this.SelectedStar)
-  this.addRaitingInServer()
+ Rating(index: number) {
+  
+  if (this.userLoadded == 'true') {
+
+    this.SelectedStar = index + 1;
+    this.previousSelection = this.SelectedStar;
+    this.onRating.emit(this.SelectedStar);
+
+    this.addRaitingInServer();
+
+  } else {
+
+    this.errorMessage = 'To rate you need to register'
+
+    setTimeout(() => {
+      this.errorMessage = ''
+    }, 2800);
+
+  }
 
  }
 

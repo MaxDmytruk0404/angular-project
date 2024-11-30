@@ -26,7 +26,7 @@
 
             <div class="relative w-32 sm:mb-2">
 
-                <button (click)="handleList()" class="mt-5 w-full bg-amber-400 px-2 py-1 rounded text-black shadow-box hover:bg-amber-500 max-sm:mt-0">Add to list <i class="fa-solid fa-list-ul ml-4"></i></button>
+                <button *ngIf="userLoadded == 'true'" (click)="handleList()" class="mt-5 w-full bg-amber-400 px-2 py-1 rounded text-black shadow-box hover:bg-amber-500 max-sm:mt-0">Add to list <i class="fa-solid fa-list-ul ml-4"></i></button>
 
                 <div *ngIf="listDisplay == true && myLists.length !== 0" class="max-h-20 overflow-auto my-scrolbar absolute top-14 w-full bg-black/70 max-sm:top-8">
 

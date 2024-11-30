@@ -33,7 +33,7 @@ export class FilterFilmsCatalogComponent implements OnInit {
   message: string = '';
 
   sendFulmInfo: any;
-
+  userLoadded: string = 'false'
   searchProces: boolean = false;
 
   constructor(
@@ -47,36 +47,46 @@ export class FilterFilmsCatalogComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.updateSavedStatusService.savedStaus$.subscribe(status => {
-  
-      if (status !== '') {
-  
-        let newStatus = status.includes('already added');
-  
-        if (newStatus) {
+    if (typeof window !== 'undefined' && window.localStorage) { 
 
-          this.errorMessage = `${status}`;
+      this.userLoadded = localStorage.getItem('logged') || 'false';
+
+    }
+
+    if (this.userLoadded == 'true') {
+      
+      this.updateSavedStatusService.savedStaus$.subscribe(status => {
   
+        if (status !== '') {
+    
+          let newStatus = status.includes('already added');
+    
+          if (newStatus) {
+  
+            this.errorMessage = `${status}`;
+    
+            setTimeout(() => {
+              this.errorMessage = '';
+            }, 2800);
+    
+          } else {
+  
+            this.message = `${status} added to Saved`;
+    
+            setTimeout(() => {
+              this.message = '';
+            }, 2800);
+  
+          }
+    
           setTimeout(() => {
-            this.errorMessage = '';
-          }, 2800);
+            this.updateSavedStatusService.resetSavedStatus();
+          }, 3000); 
   
-        } else {
-
-          this.message = `${status} added to Saved`;
-  
-          setTimeout(() => {
-            this.message = '';
-          }, 2800);
-
         }
-  
-        setTimeout(() => {
-          this.updateSavedStatusService.resetSavedStatus();
-        }, 3000); 
+      });
 
-      }
-    });
+    }
 
     this.route.params.subscribe((params) => {
 
@@ -497,7 +507,8 @@ export class FilterFilmsCatalogComponent implements OnInit {
     filmYear: string,
     filmId: string) {
 
-      let API;
+      if (this.userLoadded == 'true') {
+        let API;
       let FilmId;
 
       if (filmType == 'movie') {
@@ -525,6 +536,15 @@ export class FilterFilmsCatalogComponent implements OnInit {
         this.addToSavedService.sendInfo(filmSaveInfo);
 
       })
+      } else {
+
+        this.errorMessage = `To save the movie you need to log in to your account.`;
+  
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 2800);
+
+      }
 
   }
   
