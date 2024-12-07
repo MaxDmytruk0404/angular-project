@@ -31,7 +31,7 @@
             <div *ngFor="let info of comentaries.slice().reverse()" class="mb-2">
                 <h3 class="color-text-switching">{{info.usrName}} <span>{{info.time}}</span></h3>
                 <div class="flex items-center gap-2">
-                    <img [src]="info.userImg" alt="" class="w-12 h-12 bg-slate-500">
+                    <img [src]="info.userImg" alt="" class="w-12 h-12 bg-slate-500" loading="lazy">
                     <p class="w-full color-component-switching px-3 color-text-switching py-3">{{info.comentar}}</p>
                 </div>
             </div>

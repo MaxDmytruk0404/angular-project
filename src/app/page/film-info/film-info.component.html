@@ -52,11 +52,8 @@
 
                 <!-- Трейлер -->
 
-                <iframe class="w-9/12 max-md:w-full h-96" [src]="trelerUrl" title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
+                <lite-youtube [attr.videoid]="trelerUrl"></lite-youtube>
+
             </div>
 
             <!-- Постер якщо трейлера немає -->
@@ -119,3 +116,4 @@
     <div *ngIf="message" class="fixed bottom-5 left-1/4 m-auto bg-green-500 w-1/2 p-4 rounded mt-2 flex justify-center">
         <p class="text-white">{{message}}</p>
     </div>
+

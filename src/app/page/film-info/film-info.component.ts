@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit} from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { YouTubePlayerModule } from '@angular/youtube-player';
-import { YouTubePlayer } from '@angular/youtube-player';
 import { DomSanitizer} from '@angular/platform-browser';
 
 import { StarRatingComponent } from '../../page-component/star-rating/star-rating.component';
@@ -12,12 +10,14 @@ import { FilmInfoService } from '../../service/film-info/film-info.service';
 import { DataOperationService } from '../../service/dataOperation/data-operation.service';
 
 
+
 @Component({
   selector: 'app-film-info',
   standalone: true,
-  imports: [CommonModule, YouTubePlayerModule, YouTubePlayer, StarRatingComponent, ComentariesComponent],
+  imports: [CommonModule, StarRatingComponent, ComentariesComponent],
   templateUrl: './film-info.component.html',
   styleUrl: './film-info.component.css',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class FilmInfoComponent implements OnInit {
@@ -151,7 +151,6 @@ export class FilmInfoComponent implements OnInit {
         if(trailers) {
 
           this.trelerUrl =  trailers[0].key;
-          this.trelerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.trelerUrl}`);
 
         } else {
 

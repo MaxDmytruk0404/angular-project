@@ -13,15 +13,15 @@
         <!-- Головний контент -->
         <div class="w-full relative">
 
-            <img class="w-full h-72 object-cover brightness-50" src="assets/profile-bg.webp" alt="">
+            <img class="w-full h-72 object-cover brightness-50 max-sm:h-36" src="assets/profile-bg.webp" alt="">
 
-            <div class="flex gap-3 items-end absolute top-64 left-8">
+            <div class="flex gap-3 items-end absolute top-64 left-8 max-sm:top-32">
 
-                <img [src]="userInfo.img ? userInfo.img : comonUserImg" alt="ProfilePhoto" class="w-32 h-auto rounded">
+                <img [src]="userInfo.img ? userInfo.img : comonUserImg" alt="ProfilePhoto" class="w-32 h-auto rounded max-sm:w-16">
 
                 <div>
 
-                    <h2 class="text-2xl">{{userInfo.name}}</h2>
+                    <h2 class="text-2xl max-sm:text-xl">{{userInfo.name}}</h2>
                     <p class="text-xs">{{userInfo.email}}</p>
 
                 </div>

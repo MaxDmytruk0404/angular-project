@@ -17,7 +17,7 @@
                 <div [routerLink]="['Information', film.imdbID]"
                     class="cursor-pointer h-96 overflow-hidden group max-sm:h-96 max-[375px]:h-auto max-[470px]:h-80">
 
-                    <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 max-[375px]:w-9/12  max-[375px]:group-hover:w-9/12 max-sm:w-full  max-sm:group-hover:w-11/12 max-md:w-8/12 max-md:group-hover:w-7/12 max-lg:w-10/12 max-lg:group-hover:w-8/12" *ngIf="film.Poster !== 'N/A'" [src]='film.Poster' alt="{{film.Title}}">
+                    <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 max-[375px]:w-9/12 max-[375px]:group-hover:w-9/12 max-sm:w-full  max-sm:group-hover:w-11/12 max-md:w-8/12 max-md:group-hover:w-7/12 max-lg:w-10/12 max-lg:group-hover:w-8/12" *ngIf="film.Poster !== 'N/A'" [src]='film.Poster' alt="{{film.Title}}">
                     
                     <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 max-[375px]:w-9/12  max-[375px]:group-hover:w-9/12 max-sm:w-full  max-sm:group-hover:w-11/12 max-md:w-8/12 max-md:group-hover:w-7/12 max-lg:w-10/12 max-lg:group-hover:w-8/12" *ngIf="film.Poster == 'N/A'" src='assets/notFound.webp' alt="{{film.Title}}">
 
