@@ -13,16 +13,16 @@ import { DataOperationService } from '../../service/dataOperation/data-operation
 
 export class StarRatingComponent implements OnInit{
 
-  userLoadded: string = 'false';
-  errorMessage: string = '';
+  userLoadded: string = 'false'; // Вказує чи користувач увійщов
+  errorMessage: string = ''; // Повідомлення про помилку
 
-  @Input() maxRating = 10
-  maxRatingArr: any = [];
-  @Input() SelectedStar = 0;
-  previousSelection = 0;
-  @Output() onRating: EventEmitter<number> = new EventEmitter<number>();
+  @Input() maxRating = 10; // Максимальна рідкість зірок
+  maxRatingArr: any = []; // Масив з зірками
+  @Input() SelectedStar = 0; // Вибрана кіькість зірок при наведені
+  previousSelection = 0; // Вибрана кіькість зірок
+  @Output() onRating: EventEmitter<number> = new EventEmitter<number>(); // Оцінка користувача
 
-  @Input() filmId!: string;
+  @Input() filmId!: string; // Айді фільма
 
   constructor(private dataOperationServise: DataOperationService) {}
 

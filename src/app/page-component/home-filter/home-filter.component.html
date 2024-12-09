@@ -7,6 +7,8 @@
 
 <div class="overflow-hidden relative z-0">
 
+        <!-- Категорія по жанру для фільмів -->
+
     <div [ngClass]="filterCategory == 'movie' ? 'genre-active' : 'genre-no-active'" >
         <h2 class="color-text-switching py-2 color-component-switching text-center">Genre:</h2>
         <div *ngFor="let genre of filmGenre" class="flex gap-2 justify-between px-1">
@@ -17,6 +19,8 @@
             </label>
         </div>
     </div>
+
+    <!-- Категорія по жанру для серіалів -->
 
     <div [ngClass]="filterCategory == 'tv' ? 'genre-active' : 'genre-no-active'">
         <h2 class="color-text-switching py-2 color-component-switching text-center">Genre:</h2>
@@ -29,6 +33,8 @@
         </div>
     </div>
 </div>
+
+<!-- Категорія по року -->
 
 <h2 class="color-text-switching py-2 color-component-switching text-center mb-2">Year:</h2>
 <div class="flex mb-2 gap-2 items-center justify-center">

@@ -13,7 +13,7 @@ import { UpdateMenuStatusService } from '../../service/update-menu-status/update
 })
 export class MenuComponent implements OnInit{
 
-  userInfo: any;
+  userInfo: any; // Інформація про користувача
   
   constructor(private auth: AuthService, private updateMenuStatusService: UpdateMenuStatusService, private router: Router) {}
 
@@ -39,13 +39,15 @@ export class MenuComponent implements OnInit{
   }
 
   // Вихід з акаунта
+
   logout() {
 
     this.auth.logOut();
 
   }
 
-  // Navigate
+  // Навігація
+
   navigate(url: string) {
     this.updateMenuStatusService.setMenuStatus(false);
     this.router.navigate([url])

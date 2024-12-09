@@ -15,20 +15,19 @@ import { Router, RouterLink } from '@angular/router';
 
 export class UserInfoComponent implements OnInit {
 
-  userProfile: any;
-  comonUserImg: string = 'assets/user-img.webp';
-  userName: string = '';
+  comonUserImg: string = 'assets/user-img.webp'; // Картинка користувача якщо вхід відбувся не через gmail
+  userName: string = ''; // Ім'я користувача
 
-  loadding: boolean = false;
-  filmSave: any[] = [];
-  sline: number = 5;
-  screenWidth:any;
+  loadding: boolean = false; // Лоадер
+  filmSave: any[] = []; // Збережені фільми
+  sline: number = 5; // Кількість фільмів що відображатиметься в збережені
+  screenWidth: any; // Ширина екрану користувача
 
   userInfo: any = {
     email: '',
     name: '',
     img: '',
-  };
+  }; // Інформація про користувача
 
   constructor(private auth: AuthService, private dataOperationService: DataOperationService, private router: Router) {}
 

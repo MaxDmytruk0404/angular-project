@@ -13,13 +13,17 @@ import { CommonModule } from '@angular/common';
 
 export class ListInfoComponent implements OnInit{
 
-  userStorageInfo: any;
-  userLocalInfo: any;
-  listName:string = '';
-  myList: any;
-  loadding: boolean = false;
+  userStorageInfo: any; // Інформація про користувача з бази даних
+  userLocalInfo: any; // Інформація про користувача з localStarage
 
-  constructor(private route: ActivatedRoute, private dataOperationService: DataOperationService, private router: Router) {}
+  listName:string = ''; // Назва списку
+  myList: any; // Масив з мільмами що є у списку
+
+  loadding: boolean = false; // Лоадер
+
+  constructor(private route: ActivatedRoute, 
+              private dataOperationService: DataOperationService, 
+              private router: Router) {}
 
   ngOnInit(): void {
 
@@ -32,6 +36,7 @@ export class ListInfoComponent implements OnInit{
   }
 
   // Отримання списку з бази даних
+
   getList():void {
 
     this.loadding = true
@@ -73,6 +78,7 @@ export class ListInfoComponent implements OnInit{
   }
 
   // Видалення фільму зі списку
+
   removeFilm(filmId: string) {
 
     for(let list of this.userStorageInfo.lists) {
@@ -89,6 +95,7 @@ export class ListInfoComponent implements OnInit{
   }
 
   // Навігація на сторінку з докладною інформацією про фільм
+  
   navigate(filmId: any) {
     this.router.navigate(['/Information', filmId]);
   }

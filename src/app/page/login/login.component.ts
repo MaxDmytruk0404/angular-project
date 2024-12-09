@@ -12,15 +12,17 @@ import { MatInputModule } from '@angular/material/input';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
+
 export class LoginComponent implements OnInit {
-  validateMassage: string = '';
-  errorMessage: string = '';
-  message: string = '';
 
-  email: string = '';
-  password: string = '';
+  validateMassage: string = ''; // Повідомлення про неправильно заповнені форми
+  errorMessage: string = ''; // Повідомлення про помилку
+  message: string = ''; // Повідомлення користувачу 
 
-  rememberChecbox: boolean = true;
+  email: string = ''; // Введений користувачем email
+  password: string = ''; // Введений користувачем пароль
+
+  rememberCheckbox: boolean = true; // CheackBox який запамаятовує введену пошу користувача 
 
   constructor(private auth: AuthService) {}
 

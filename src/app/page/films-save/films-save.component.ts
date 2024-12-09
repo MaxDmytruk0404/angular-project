@@ -22,8 +22,8 @@ interface Film {
 
 export class FilmsSaveComponent implements OnInit {
   
-  filmSave: any[] = [];
-  loadding: boolean = true;
+  filmSave: any[] = []; // Масив з збереженими фільмами
+  loadding: boolean = true; // Лоадер
 
   constructor(private dataOperationService: DataOperationService) {}
 

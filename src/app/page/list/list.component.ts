@@ -5,7 +5,6 @@ import { DataOperationService } from '../../service/dataOperation/data-operation
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { response } from 'express';
 
 @Component({
   selector: 'app-list',
@@ -16,17 +15,24 @@ import { response } from 'express';
 })
 export class ListComponent implements OnInit{
 
-  loadding = false;
-  userStorageInfo: any;
-  userLocalInfo: any;
-  myLists: any[] = [];
-  listFormClass:string = 'w-full flex gap-3 hidden';
-  listName: string = '';
-  errorMessage = '';
-  screenWidth: number = 0;
-  sline: number = 5;
+  userStorageInfo: any; // Інформація про користувача з бази даних
+  userLocalInfo: any; // Інформація про користувача з localStorage
 
-  constructor (private dataOperationService:DataOperationService, private router: Router) {}
+  myLists: any[] = []; // Масив зі списками
+  listFormClass:string = 'w-full flex gap-3 hidden'; // Клас для блоку з фомую
+  listName: string = '';  // Назва нового сиписку
+  
+  screenWidth: number = 0; // Ширина екрану користувача
+  sline: number = 5; // кількість блоків що буде відображенна в списку на сторінці
+
+  errorMessage = ''; // Повідомлення про помилку
+
+  loadding = false; // Лоадер
+
+  constructor (private dataOperationService:DataOperationService, 
+               private router: Router) {}
+
+  // Визачення кількості фільмів що відображатиметься в списку на сторінці
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {

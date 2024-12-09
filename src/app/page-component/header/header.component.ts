@@ -16,12 +16,14 @@ import { UpdateMenuStatusService } from '../../service/update-menu-status/update
 })
 
 export class HeaderComponent implements OnInit {
-  
-  userFound: string = 'false';
-  colorFon: string = 'night';
-  userInfo: any;
-  menuIsOpen: boolean = false;
-  private subscription: Subscription = new Subscription();
+
+  userInfo: any; // Інформація про користувача
+  userFound: string = 'false'; // Вказує чи авторизувався користувач
+
+  colorFon: string = 'night'; // Тема
+  menuIsOpen: boolean = false; // Вказує чи відкрите меню
+
+  private subscription: Subscription = new Subscription(); // Відслідковування чи відкрите менню
 
   constructor(
     private renderer: Renderer2,

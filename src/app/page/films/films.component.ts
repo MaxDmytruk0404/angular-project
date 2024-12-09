@@ -19,19 +19,20 @@ import { UpdateSavedStatusService } from '../../service/update-saved-status/upda
 })
 
 export class FilmsComponent implements OnInit {
-  films: any[] = [];
-  errorMessage: string = '';
-  message: string = '';
-  maxNumberPage: number = 1;
-  receviedFilm: boolean = false;
-  page: number = 1;
-  enterPageNumber: number = 1;
-  filmId: string = '';
-  saveMasive: any[] = [];
-  api: string = environment.ApiOMDB;
-  userLoadded: string = 'false';
-  sendFulmInfo: any;
-  searchProces: boolean = false;
+  films: any[] = []; // Масив з інформаціюєю про фільм
+  filmId: string = ''; // Айді фільма
+  api: string = environment.ApiOMDB; // API для побудови посилання за яким отримується інформація про фільми
+
+  errorMessage: string = ''; // Повідомлення про помиилку яке виводиться на сторінку у повні моменти
+  message: string = ''; // Звичайне повідомлення яке виводиться на сторінку у повні моменти
+
+  maxNumberPage: number = 1; // Максимальна кількість сторінок
+  page: number = 1; // Сторінка на якій знаходиться користувач
+  enterPageNumber: number = 1; // Введена сторінка для пошуку
+
+  userLoadded: string = 'false'; // Вказує чи авторизувався користувач
+  searchProces: boolean = false; // Вказує чи відбувається процес пошуку фільма чи серіала
+  receviedFilm: boolean = false; // Вказує чи фільм було отримано
 
 
   constructor(

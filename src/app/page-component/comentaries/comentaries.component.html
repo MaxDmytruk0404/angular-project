@@ -1,20 +1,27 @@
 <div class="px-1">
 
+    <!-- Блок для введення власного коментарря та його віправки -->
+
     <div *ngIf="userLoadded == 'true'" class="mt-4 pt-2 border-t border-color-switching">
 
         <h2 class="color-text-switching text-lg">Add a comment</h2>
 
         <div class="flex gap-2">
+
             <mat-form-field class="w-full h-14">
                 <mat-label>Your comment</mat-label>
                 <input matInput [(ngModel)]="myComentar" (keyup.enter)="sendComentar()">
               </mat-form-field>
+
             <button (click)="sendComentar()"
             class="block btn-hover text-sm px-6 h-14 border-none color-text-switching color-component-switching cursor-pointer  lg:rounded lg:text-base"><i
             class="fa-solid fa-magnifying-glass"></i></button>
+            
         </div>
 
     </div>
+
+    <!-- Повідомлення про необхідність зареєструватися щоб відбравити коментар -->
 
     <div *ngIf="userLoadded == 'false'" class="mt-4 pt-2 border-t border-color-switching">
 
@@ -22,24 +29,30 @@
 
     </div>
 
+    <!-- Усі коментарі -->
+
     <div class="pt-2">
 
         <h1 class="color-text-switching">Comentaries: <span *ngIf="comentaries.length !== 0">{{comentaries.length}}</span> <span *ngIf="comentaries.length == 0">0</span></h1>
 
+
         <div *ngIf="comentaries.length !== 0" class="max-h-96 overflow-auto my-scrolbar">
 
             <div *ngFor="let info of comentaries.slice().reverse()" class="mb-2">
+
                 <h3 class="color-text-switching">{{info.usrName}} <span>{{info.time}}</span></h3>
+
                 <div class="flex items-center gap-2">
+
                     <img [src]="info.userImg" alt="" class="w-12 h-12 bg-slate-500" loading="lazy">
                     <p class="w-full color-component-switching px-3 color-text-switching py-3">{{info.comentar}}</p>
+
                 </div>
+
             </div>
 
-            
-            
-
         </div>
+
     </div>
 
 </div>

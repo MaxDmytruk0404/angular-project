@@ -1,6 +1,10 @@
 <div class="my-container flex gap-2 mt-16 pb-4">
 
+    <!-- Бокове меню -->
+
     <app-menu class="color-text-switching w-64 max-md:hidden"></app-menu>
+
+    <!-- Основний контент -->
 
     <div class="w-full flex gap-4 flex-wrap justify-center">
 
@@ -31,4 +35,6 @@
 
 </div>
 
+<!-- Лоадер -->
+ 
 <div *ngIf="loadding == true" class="loader"></div>

@@ -25,11 +25,11 @@ import { UpdateSavedStatusService } from '../../service/update-saved-status/upda
 })
 export class HomeComponent implements OnInit {
   
-  errorMessage: string = '';
-  message: string = '';
-  saveMasive: any[] = [];
-  sendFulmInfo: any;
-  userLoadded: string = 'false';
+  errorMessage: string = ''; // Повідомлення про помилку
+  message: string = ''; // Повідомлення для користувача
+  userLoadded: string = 'false'; // Лоадер
+
+  // Інформація про фільми для головного слайдера 
 
   slidesBig: any = [
     {
@@ -70,6 +70,8 @@ export class HomeComponent implements OnInit {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
+  // Інформація про фільми для слайдера з найкращими фільмами у 2024 році
 
   slidesBestIn2024: any = [
     {
@@ -144,6 +146,8 @@ export class HomeComponent implements OnInit {
     },
   ];
 
+  // Інформація про фільми по рекомендованим
+
   slidesRecomend: any = [
     {
       name: 'Avengers: Infinity War',
@@ -217,6 +221,8 @@ export class HomeComponent implements OnInit {
     },
   ];
 
+  // Конфігурація слайдера
+
   slideConfig = {
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -245,7 +251,10 @@ export class HomeComponent implements OnInit {
     ],
   };
 
-  constructor(private searchService: SearchService, private addToSavedService: AddToSavedService, private updateSavedStatusService: UpdateSavedStatusService) {}
+  constructor(
+    private searchService: SearchService, 
+    private addToSavedService: AddToSavedService, 
+    private updateSavedStatusService: UpdateSavedStatusService) {}
 
   ngOnInit(): void {
 

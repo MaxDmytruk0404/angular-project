@@ -15,25 +15,27 @@ import { FormsModule } from '@angular/forms';
 
 export class HomeFilterComponent {
 
-  filterMinYear: number = 1900;
-  filterMaxYear: number = 2024;
-  filterCategory: string = '';
-  page = 1
+  filterMinYear: number = 1900; // Мінімальний рік фільму
+  filterMaxYear: number = 2024; // Максимаьний рік фільму
+  filterCategory: string = ''; // Категорія (філь / серіал)
+  page = 1; // Сторінка
 
-  errorMessage: string = '';
+  errorMessage: string = ''; // Повідомлення про помику
 
-  selectedFilmGanre: string = '';
-  selectedTvGanre: string = '';
+  selectedFilmGanre: string = ''; // Вирані жанри для фільму
+  selectedTvGanre: string = ''; // Вибрані жанри для серіалу
 
   filterAtive: string =
-    'px-2 py-1 border-2 border-color-switching btn-active-switching';
+    'px-2 py-1 border-2 border-color-switching btn-active-switching'; // Клас для активної кнопки з типом тайтлу (фільм / сріал)
   filterNoAtive: string =
-    'px-2 py-1 border-2 border-color-switching btn-no-active-switching';
+    'px-2 py-1 border-2 border-color-switching btn-no-active-switching'; // Клас для неактивної кнопки з типом тайтлу (фільм / сріал)
 
   filterBtnsType = [
     { text: 'Movie', name: 'movie', isActive: false },
     { text: 'TV Shows', name: 'tv', isActive: false },
-  ];
+  ]; // Кнопки з ипом тайтлу (фільм / сріал)
+
+  // Жанри для серіалів
 
   tvGenre = [
     {
@@ -101,6 +103,8 @@ export class HomeFilterComponent {
       name: "Western"
     }
   ];
+
+  // Жанри для фільмів
 
   filmGenre = [
     {

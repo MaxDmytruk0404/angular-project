@@ -1,7 +1,11 @@
     <div class="my-container flex gap-4 mt-16 pb-4">
 
+        <!-- Бокове меню -->
+
         <app-menu class="color-text-switching w-64 max-md:hidden"></app-menu>
     
+        <!-- Основний контент -->
+
         <div class="w-full color-text-switching relative overflow-hidden">
     
             <div class="flex justify-between w-full flex-wrap">
@@ -11,6 +15,8 @@
                 <button (click)="showListForm()" class="my-button px-2 h-7 color-component-switching color-text-switching">Create Lists</button>
     
             </div>
+
+            <!-- Блок для заповнення форми та довавання нового списку -->
 
             <div class="w-full relative overflow-hidden">
                 <div [ngClass]="listFormClass">
@@ -32,6 +38,8 @@
 
             <div *ngIf="myLists.length !== 0">
 
+                <!-- Усі списки -->
+
                 <div *ngFor="let list of myLists" class="mt-5 block-border rounded border-gray-400 p-2">
 
                     <div class="flex justify-between items-center flex-wrap">
@@ -50,6 +58,8 @@
 
                     <div *ngIf="list.listFilms.length !== 0" class="flex gap-2 pt-2">
 
+                        <!-- Фільми що є в списку -->
+                         
                         <div *ngFor="let film of list.listFilms.slice(0, sline)" class="relative w-44 h-80 color-text-switching pb-4 color-shadow-switching overflow-hidden bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow cursor-pointer text-center  max-[500px]:h-64 max-[850px]:h-72">
 
                             <div class="cursor-pointer overflow-hidden group " (click)="navigate(film.id)">

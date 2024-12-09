@@ -17,14 +17,14 @@ import {MatInputModule} from '@angular/material/input';
 
 export class SearchComponent implements OnInit{
 
-  filmName: string = '';
-  filmYear: string = 'all';
-  page: number = 1;
-  category: string = 'all';
+  filmName: string = ''; // І'мя фільму яке вводить користувач
+  filmYear: string = 'all'; // Рік фільму
+  page: number = 1; // Сторінка
+  category: string = 'all'; // Категорія
 
-  errorMessage: string = '';
+  errorMessage: string = ''; // Повідомлення про помилку
 
-  isHovered: boolean[] = [];
+  isHovered: boolean[] = []; // Філми які відображаються як підказки по введеному імені
 
   // Фільтри
 

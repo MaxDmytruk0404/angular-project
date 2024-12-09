@@ -1,6 +1,5 @@
 <div class="my-container pb-2">
 
-
     <div *ngIf="filmInfo">
 
         <div class="flex justify-between max-sm:flex-col max-sm:mb-3">
@@ -44,29 +43,29 @@
 
         <div class="w-full content-film-info" #contentFilmInfo>
 
-            <div *ngIf="trelerUrl" class="flex h-96 gap-2 max-md:flex-col">
+            <div *ngIf="trelerId" class="flex h-96 gap-2 max-md:flex-col">
 
                 <!-- Постер -->
                  
-                <img class="w-3/12 max-md:w-96 max-md:hidden" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
+                <img alt="title poster" class="w-3/12 max-md:w-96 max-md:hidden" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
 
                 <!-- Трейлер -->
 
-                <lite-youtube [attr.videoid]="trelerUrl"></lite-youtube>
+                <lite-youtube [attr.videoid]="trelerId"></lite-youtube>
 
             </div>
 
             <!-- Постер якщо трейлера немає -->
 
-            <div *ngIf="!trelerUrl" class="flex gap-2">
-                <img class="w-72 m-auto" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
+            <div *ngIf="!trelerId" class="flex gap-2">
+                <img alt="trailer poster" class="w-72 m-auto" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
             </div>
 
             <div class="max-md:flex gap-2">
 
                 <!-- пострет при малих розміру екрану -->
 
-                <img class="w-5/12 hidden pt-5 h-96 max-md:block max-sm:w-32 max-sm:h-52" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
+                <img alt="title poster" class="w-5/12 hidden pt-5 h-96 max-md:block max-sm:w-32 max-sm:h-52" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
 
                 <div class="max-md:w-7/12 max-sm:w-full">
 

@@ -1,16 +1,19 @@
 <div class="my-container flex gap-10">
 
-
     <div class="w-full">
 
+        <!-- Комнонет для пошуку фільмів -->
+         
         <app-search></app-search>
 
         <!-- Списки фільмів -->
+
         <div *ngIf="receviedFilm"
             class="w-full flex gap-4 flex-wrap justify-center">
 
 
             <!-- Блок з фільмом -->
+
             <div *ngFor="let film of films"
                 class="elative h-auto color-text-switching pb-4 color-shadow-switching overflow-hidden bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow cursor-pointer text-center w-56 max-[375px]:w-10/12 max-[470px]:w-40  max-sm:w-52 max-md:w-72 max-lg:w-64">
 
@@ -30,7 +33,6 @@
 
                 </div>
 
-
                 <!-- Кнопка зберегти в збережені -->
 
                 <div class="absolute top-0 w-6 right-6 film-save cursor-pointer"
@@ -45,10 +47,10 @@
 
             </div>
 
-
         </div>
 
         <!-- Переключання між сторінками та пошук сторінки -->
+
         <div *ngIf="receviedFilm" class="flex gap-2 justify-center mt-4 mb-5 flex-wrap">
 
             <div class="flex items-center block-border rounded">
@@ -76,6 +78,7 @@
         </div>
 
         <!-- Повідомлення -->
+
         <div *ngIf="message !== ''" class="fixed bottom-5 left-1/4 m-auto bg-green-500 w-1/2 p-4 rounded mt-2 flex justify-center">
             <p class="text-white">{{message}}</p>
           </div>
@@ -87,5 +90,7 @@
 
     </div>
 </div>
+
+<!-- Лоадер -->
 
 <div *ngIf="searchProces" class="loader"></div>

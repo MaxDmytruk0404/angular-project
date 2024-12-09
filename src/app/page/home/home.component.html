@@ -1,6 +1,10 @@
 <div class="my-container">
 
+  <!-- Компонент для пошуку фільмів -->
+
   <app-search></app-search>
+
+  <!-- Великий слайдер з інформацією про фільми -->
 
   <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideBigConfig">
 
@@ -53,6 +57,7 @@
 
   <div class="flex gap-4 mt-4">
 
+    <!-- Фільтер у правій колонці -->
     <div class="w-1/6 my-shadow h-full rounded-md overflow-hidden filter-home">
       <app-home-filter></app-home-filter>
     </div>
@@ -60,6 +65,8 @@
     <div class="w-5/6 home-content">
 
       <h2 class="color-text-switching text-lg text-center py-1 color-component-switching">Best in 2024</h2>
+
+      <!-- Слайдер з найкращими фільмами у 2024 році -->
 
       <ngx-slick-carousel class="carousel " #slickModal="slick-carousel" [config]="slideConfig">
 
@@ -101,6 +108,8 @@
       </ngx-slick-carousel>
 
       <h2 class="color-text-switching text-lg text-center py-1 color-component-switching mt-5">Recommend</h2>
+
+      <!-- Слайдер з рекомендованими фільмами -->
 
       <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
 
@@ -150,9 +159,12 @@
 </div>
 
 <!-- Повідомлення про успішний вхід -->
+
 <div *ngIf="message !== ''" class="fixed bottom-5 left-1/4 m-auto bg-green-500 w-1/2 p-4 rounded mt-2 flex justify-center">
   <p class="text-white">{{message}}</p>
 </div>
+
+<!-- Повідомлення про помилку -->
 
 <div *ngIf="errorMessage !== ''" class="fixed bottom-5 left-1/4 m-auto bg-red-500 w-1/2 p-4 rounded mt-2 flex justify-center">
   <p class="text-white">{{errorMessage}}</p>

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DomSanitizer} from '@angular/platform-browser';
+import { Meta} from '@angular/platform-browser';
 
 import { StarRatingComponent } from '../../page-component/star-rating/star-rating.component';
 import { ComentariesComponent } from '../../page-component/comentaries/comentaries.component';
@@ -22,23 +22,28 @@ import { DataOperationService } from '../../service/dataOperation/data-operation
 
 export class FilmInfoComponent implements OnInit {
 
-  userLocalInfo: any;
-  userStorageInfo: any;
-  filmId: string = '';
-  filmInfo: any;
-  trelerUrl: any;
-  raiting: number = 0;
-  listDisplay: boolean = false;
-  myLists: any = [];
-  loadding: boolean = false;
-  userLoadded: string = 'false';
-  message: string = '';
+  userLocalInfo: any; // Інформація про користувача з localStarage
+  userStorageInfo: any; // Інформація про користувача з бази даних
+
+  filmId: string = ''; // Айді фільму
+  filmInfo: any; // Усі данні про фільм
+  trelerId: any; // Айді трейлера на ютубі
+
+  raiting: number = 0; // Оцінка яку виставив користувач
+
+  listDisplay: boolean = false; // Відображує блок з переіком доступник списків при true
+  myLists: any = []; // Масив з саписками
+
+  loadding: boolean = false; // Лоадер 
+  userLoadded: string = 'false'; // Вказує чи увішов користувач в акаунт
+
+  message: string = ''; // Повідомлення яке виводиться на сторінку і певні моменти
 
   constructor(
     private route: ActivatedRoute,
     private FilmInfoService: FilmInfoService,
-    private sanitizer: DomSanitizer,
     private dataOperationService: DataOperationService,
+    private meta: Meta,
   ) { }
   
 
@@ -119,6 +124,7 @@ export class FilmInfoComponent implements OnInit {
     this.FilmInfoService.getFilmInfo(this.filmId).subscribe((data) => {
 
       this.filmInfo = data;
+      this.meta.updateTag({ name: 'description', content: `${this.filmInfo.Plot}` });
 
     });
 
@@ -150,11 +156,11 @@ export class FilmInfoComponent implements OnInit {
 
         if(trailers) {
 
-          this.trelerUrl =  trailers[0].key;
+          this.trelerId =  trailers[0].key;
 
         } else {
 
-          this.trelerUrl ='';
+          this.trelerId ='';
 
         }
 

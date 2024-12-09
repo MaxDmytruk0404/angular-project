@@ -20,21 +20,20 @@ import { UpdateSavedStatusService } from '../../service/update-saved-status/upda
 
 export class FilterFilmsCatalogComponent implements OnInit {
 
-  films: any[] = [];
-  maxNumberPage: number = 1;
-  receviedFilm: boolean = false;
-  page: number = 1;
-  enterPageNumber: number = 1;
-  filmId: string = '';
-  saveMasive: any[] = [];
-  api: string = environment.ApiTMDB;
+  films: any[] = []; // Масив з інформацією про фільми
+  filmId: string = ''; // Айді фільма
+  api: string = environment.ApiTMDB; // API для будування посилання за яким отримуються фільми
 
-  errorMessage: string = '';
-  message: string = '';
+  maxNumberPage: number = 1; // Максимальна кількість сторінок
+  page: number = 1; // Сторінка на якій знаходиться користувач
+  enterPageNumber: number = 1; // Введена сторінка для пошуку
 
-  sendFulmInfo: any;
-  userLoadded: string = 'false'
-  searchProces: boolean = false;
+  errorMessage: string = ''; // Повідомлення про помилку для користувача
+  message: string = ''; // Повідомлення для користувача при певних діях
+
+  userLoadded: string = 'false'; // Вказує чи увійшов користувач в систему
+  searchProces: boolean = false; // Вказує чи іде процесотримання даних api
+  receviedFilm: boolean = false; // Вказує чи було отримано фільми
 
   constructor(
     private filmsServiсe: FilmsService,
@@ -424,82 +423,7 @@ export class FilterFilmsCatalogComponent implements OnInit {
 
   }
 
-  // Збереження фільму
-
-  saveFilm(
-    filmPoster: string,
-    filmTitle: string,
-    filmType: string,
-    filmYear: string,
-    filmId: string
-  ): void {
-
-    if (typeof window !== 'undefined' && window.localStorage) {
-
-      const filterParamsLocal = localStorage.getItem('filterParams');
-
-      const filterParams = filterParamsLocal
-        ? JSON.parse(filterParamsLocal)
-        : {};
-
-      let API;
-      let FilmId;
-
-      if (filterParams.category == 'movie') {
-
-        API = `${this.api}movie/${filmId}/external_ids?api_key=43bf190d6bcf679c19972989b9cb1774`;
-
-      } else {
-
-        API = `${this.api}tv/${filmId}/external_ids?api_key=43bf190d6bcf679c19972989b9cb1774`;
-
-      }
-
-      this.filmsServiсe.getAll(API).subscribe((data) => {
-
-        FilmId = data.imdb_id;
-
-        if (typeof localStorage !== 'undefined') {
-
-          const getSaveFilm = localStorage.getItem('filmSaveInfo');
-
-          if (getSaveFilm) {
-
-            const getFilmInfo = JSON.parse(getSaveFilm);
-
-            for (let filmInfo of getFilmInfo) {
-
-              if (FilmId !== filmInfo.id) {
-
-                this.saveMasive.push(filmInfo);
-
-              }
-
-            }
-
-            alert(`${filmTitle} add to save`);
-
-          }
-
-        }
-
-        const filmSaveInfo = {
-          poster: 'https://image.tmdb.org/t/p/w500' + filmPoster,
-          title: filmTitle,
-          type: filmType,
-          year: filmYear,
-          id: FilmId,
-        };
-
-        this.saveMasive.push(filmSaveInfo);
-        localStorage.setItem('filmSaveInfo', JSON.stringify(this.saveMasive));
-        this.saveMasive = [];
-
-      });
-
-    }
-
-  }
+  // Додавання фільму в збережені та відправка інформації на базу данних
 
   sendInfo(filmPoster: string,
     filmTitle: string,

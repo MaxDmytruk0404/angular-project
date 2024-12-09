@@ -13,8 +13,8 @@ import { CommonModule } from '@angular/common';
 
 export class ForgotPasswordComponent implements OnInit {
 
-  email: string = '';
-  errorMessage: string = '';
+  email: string = ''; // Emial який ввів користувач
+  errorMessage: string = ''; // Повідомлення про помилку
 
   constructor(private auth: AuthService) {}
 

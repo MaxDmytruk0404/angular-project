@@ -16,11 +16,11 @@ import { MatInputModule } from '@angular/material/input';
 
 export class RegistrationComponent implements OnInit{
 
-  validateMassage: string = '';
-  errorMessage: string = '';
+  validateMassage: string = ''; // Повідомлення про невірно заповненну форму
+  errorMessage: string = ''; // Повідомлення про помилку
 
-  email: string = '';
-  password: string = '';
+  email: string = ''; // Введений користувачем email
+  password: string = '';  // Введений користувачем пароль
 
   constructor(private auth: AuthService) {}
 

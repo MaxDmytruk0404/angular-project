@@ -7,7 +7,7 @@
         <mat-form-field class="example-full-width w-full h-14 text-center outline-none z-20 relative mb-4">
             <mat-label class="text-center">Your email</mat-label>
             <input class="my-input-color" matInput type="email" name="email" [(ngModel)]="email" autocomplete="on"
-                [attr.name]="rememberChecbox ? 'name' : ''">
+                [attr.name]="rememberCheckbox ? 'name' : ''">
         </mat-form-field>
 
 
@@ -25,7 +25,7 @@
 
         <div class="flex justify-between mt-3">
             <div class="flex gap-1 items-center">
-                <input type="checkbox" id="checkbox" name="checkbox" [(ngModel)]="rememberChecbox">
+                <input type="checkbox" id="checkbox" name="checkbox" [(ngModel)]="rememberCheckbox">
                 <p class="color-link-text-switching">Remember me</p>
             </div>
             <p class="cursor-pointer hover:border-b-2 border-color" routerLink="/ForgotPassword">Forgot password?</p>
