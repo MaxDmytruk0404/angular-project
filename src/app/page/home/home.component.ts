@@ -28,47 +28,14 @@ export class HomeComponent implements OnInit {
   errorMessage: string = ''; // Повідомлення про помилку
   message: string = ''; // Повідомлення для користувача
   userLoadded: string = 'false'; // Лоадер
-
-  // Інформація про фільми для головного слайдера 
-
-  slidesBig: any = [
-    {
-      name: 'Deadpool & Wolverine',
-      bg: 'assets/Deadpool_&_Wolverine_bg.webp',
-      img: 'assets/Deadpool_&_Wolverine.webp',
-      id: 'tt6263850',
-      type: 'movie',
-      year: '2024',
-    },
-    {
-      name: 'Fallout',
-      bg: 'assets/Fallout_bg.webp',
-      img: 'assets/Fallout.webp',
-      id: 'tt12637874',
-      type: 'series',
-      year: '2024-',
-    },
-    {
-      name: 'Godzilla x Kong: The New Empire',
-      bg: 'assets/Godzilla_x_Kong_The_New_Empire_bg.webp',
-      img: 'assets/Godzilla_x_Kong_The_New_Empire.webp',
-      id: 'tt14539740',
-      type: 'movie',
-      year: '2024',
-    },
-    {
-      name: 'Dune: Part Two',
-      bg: 'assets/Dune_Part_Two_bg.webp',
-      img: 'assets/Dune_Part_Two.webp',
-      id: 'tt15239678',
-      type: 'movie',
-      year: '2024',
-    },
-  ];
-
-  slideBigConfig = {
-    slidesToShow: 1,
-    slidesToScroll: 1,
+  
+  filmHeaderInfo: any = {
+    name: 'Deadpool & Wolverine',
+    bg: 'assets/Deadpool_&_Wolverine_bg.webp',
+    img: 'assets/Deadpool_&_Wolverine.webp',
+    id: 'tt6263850',
+    type: 'movie',
+    year: '2024',
   };
 
   // Інформація про фільми для слайдера з найкращими фільмами у 2024 році
