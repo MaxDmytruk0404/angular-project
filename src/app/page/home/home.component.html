@@ -12,7 +12,7 @@
 
       <div [routerLink]="['Information', 'tt6263850']"
         class="cursor-pointer h-96 overflow-hidden my-hover bg-cover bg-center max-sm:h-56"
-        style="background-image: url('assets/Deadpool_&_Wolverine_bg.webp')" fetchpriority="high">
+        style="background-image: url('assets/Deadpool_&_Wolverine_bg.webp')">
 
         <div class="w-72 h-full pt-5 bg-black/[.6] max-sm:w-full max-sm:flex max-sm:gap-2">
         
@@ -66,14 +66,14 @@
 
       <!-- Слайдер з найкращими фільмами у 2024 році -->
 
-      <ngx-slick-carousel class="carousel " #slickModal="slick-carousel" [config]="slideConfig" fetchpriority="high">
+      <ngx-slick-carousel class="carousel " #slickModal="slick-carousel" [config]="slideConfig">
 
         <div ngxSlickItem *ngFor="let slide of slidesBestIn2024"
           class="text-center m-2 h-96 color-text-switching relative bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow max-[300px]:h-64 max-[750px]:h-80">
 
-          <div [routerLink]="['Information', slide.id]" class="cursor-pointer pt-5 px-2 h-96 overflow-hidden group max-[300px]:h-64 max-[470px]:h-80 max-[750px]:h-80">
+          <div [routerLink]="['Information', slide.id]" class="cursor-pointer pt-5 px-2 h-96 overflow-hidden group max-[300px]:h-64 max-[470px]:h-80 max-[750px]:h-80" loading="lazy">
 
-            <img src="{{slide.img}}" alt="" class="m-auto w-52 object-cover group-hover:w-44 ease-in-out duration-1000 max-[300px]:w-32 max-[300px]:group-hover:w-24 max-[750px]:w-40 max-[750px]:group-hover:w-32 max-md:w-48 max-md:group-hover:w-40" fetchpriority="high">
+            <img src="{{slide.img}}" alt="" class="m-auto w-52 object-cover group-hover:w-44 ease-in-out duration-1000 max-[300px]:w-32 max-[300px]:group-hover:w-24 max-[750px]:w-40 max-[750px]:group-hover:w-32 max-md:w-48 max-md:group-hover:w-40" loading="lazy">
            
             <h2 class="p-2 flex-grow max-[300px]:text-sm">{{slide.name}}</h2>
 
@@ -109,14 +109,14 @@
 
       <!-- Слайдер з рекомендованими фільмами -->
 
-      <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" fetchpriority="high">
+      <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
 
         <div ngxSlickItem *ngFor="let slide of slidesRecomend"
           class="text-center m-2 h-96 color-text-switching relative bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow max-[300px]:h-64 max-[750px]:h-80">
 
           <div [routerLink]="['Information', slide.id]" class="cursor-pointer pt-5 px-2 h-96 overflow-hidden group max-[300px]:h-64 max-[470px]:h-80 max-[750px]:h-80">
 
-            <img fetchpriority="high" src="{{slide.img}}" alt="" class="m-auto w-52 object-cover group-hover:w-44 ease-in-out duration-1000 max-[300px]:w-32 max-[300px]:group-hover:w-24 max-[750px]:w-40 max-[750px]:group-hover:w-32 max-md:w-48 max-md:group-hover:w-40" fetchpriority="high">
+            <img src="{{slide.img}}" alt="" class="m-auto w-52 object-cover group-hover:w-44 ease-in-out duration-1000 max-[300px]:w-32 max-[300px]:group-hover:w-24 max-[750px]:w-40 max-[750px]:group-hover:w-32 max-md:w-48 max-md:group-hover:w-40" loading="lazy">
            
             <h2 class="p-2 flex-grow max-[300px]:text-sm">{{slide.name}}</h2>
 
