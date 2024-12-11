@@ -7,7 +7,10 @@
     "build": "tailwindcss -i ./src/input.css -o ./src/output.css --watch",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:ProjectAngular": "node dist/project-angular/server/server.mjs"
+    "build:ssr": "ng build && ng run ProjectAngular:server",
+    "serve:ssr": "node dist/ProjectAngular/server/main.js",
+    "dev:ssr": "ng run ProjectAngular:serve-ssr"
+    
   },
   "private": true,
   "dependencies": {
@@ -27,6 +30,7 @@
     "@coreui/coreui": "^5.1.2",
     "@coreui/icons-angular": "~5.1.11",
     "@justinribeiro/lite-youtube": "^1.6.0",
+    "@nguniversal/express-engine": "^7.0.2",
     "@popperjs/core": "~2.11.8",
     "angular-highcharts": "^17.0.1",
     "express": "^4.18.2",
