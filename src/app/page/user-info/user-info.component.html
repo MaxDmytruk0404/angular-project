@@ -17,8 +17,11 @@
 
             <div class="flex gap-3 items-end absolute top-64 left-8 max-sm:top-32">
 
-                <img [src]="userInfo.img ? userInfo.img : comonUserImg" alt="ProfilePhoto" class="w-32 h-auto rounded max-sm:w-16">
 
+                <div class="bg-slate-800 w-24 h-24 border-neutral-500 border-solid border-2 max-sm:w-16 max-sm:h-16">
+                     <img [src]="userInfo.img ? userInfo.img : comonUserImg" alt="ProfilePhoto" class="w-full h-full" onerror="this.style.visibility='hidden'">
+                </div>
+               
                 <div>
 
                     <h2 class="text-2xl max-sm:text-xl">{{userInfo.name}}</h2>
@@ -45,9 +48,9 @@
 
                         <div class="cursor-pointer overflow-hidden group " (click)="navigate(film.id)">
         
-                            <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 max-[250px]:w-8/12 max-[250px]:group-hover:w-7/12 max-[300px]:w-7/12 max-[300px]:group-hover:w-6/12 max-[370px]:w-10/12 max-[370px]:group-hover:w-8/12 max-[500px]:w-8/12 max-[500px]:group-hover:w-7/12 max-[680px]:w-10/12 max-[680px]:group-hover:w-8/12 max-[950px]:w-10/12 max-[950px]:group-hover:w-8/12 max-lg:w-8/12 max-lg:group-hover:w-7/12 max-[1150px]:w-10/12 max-[1150px]:group-hover:w-8/12" 
+                            <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2  max-[300px]:w-9/12 max-[300px]:group-hover:w-6/12 max-[370px]:w-10/12 max-[370px]:group-hover:w-8/12 max-[500px]:w-9/12 max-[500px]:group-hover:w-8/12 max-[680px]:w-10/12 max-[680px]:group-hover:w-8/12 max-[950px]:w-10/12 max-[950px]:group-hover:w-8/12 max-lg:w-8/12 max-lg:group-hover:w-7/12 max-[1150px]:w-10/12 max-[1150px]:group-hover:w-8/12" 
                             *ngIf="film.poster !== 'N/A'" [src]='film.poster' alt="{{film.title}}">
-                            <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 max-[250px]:w-8/12 max-[250px]:group-hover:w-7/12 max-[300px]:w-7/12 max-[300px]:group-hover:w-6/12 max-[370px]:w-10/12 max-[370px]:group-hover:w-8/12 max-[500px]:w-8/12 max-[500px]:group-hover:w-7/12 max-[680px]:w-10/12 max-[680px]:group-hover:w-8/12 max-[950px]:w-10/12 max-[950px]:group-hover:w-8/12 max-lg:w-8/12 max-lg:group-hover:w-7/12 max-[1150px]:w-10/12 max-[1150px]:group-hover:w-8/12" 
+                            <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2  max-[300px]:w-9/12 max-[300px]:group-hover:w-6/12 max-[370px]:w-10/12 max-[370px]:group-hover:w-8/12 max-[500px]:w-9/12 max-[500px]:group-hover:w-8/12 max-[680px]:w-10/12 max-[680px]:group-hover:w-8/12 max-[950px]:w-10/12 max-[950px]:group-hover:w-8/12 max-lg:w-8/12 max-lg:group-hover:w-7/12 max-[1150px]:w-10/12 max-[1150px]:group-hover:w-8/12" 
                             *ngIf="film.poster == 'N/A'" src='assets/notFound.webp' alt="{{film.title}}">
         
                             <h2 class="p-2 flex-grow max-sm:text-sm">{{film.title}}</h2>

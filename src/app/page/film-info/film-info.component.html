@@ -2,7 +2,7 @@
 
     <div *ngIf="filmInfo">
 
-        <div class="flex justify-between max-sm:flex-col max-sm:mb-3">
+        <div class="flex justify-between max-md:flex-col max-sm:mb-3">
 
             <div class="flex flex-col mb-3">
 
@@ -23,9 +23,9 @@
 
             <!-- Довавання в Lists -->
 
-            <div class="relative w-32 sm:mb-2">
+            <div class="relative w-32 max-md:mb-2">
 
-                <button *ngIf="userLoadded == 'true'" (click)="handleList()" class="mt-5 w-full bg-amber-400 px-2 py-1 rounded text-black shadow-box hover:bg-amber-500 max-sm:mt-0">Add to list <i class="fa-solid fa-list-ul ml-4"></i></button>
+                <button *ngIf="userLoadded == 'true'" (click)="handleList()" class="mt-5 w-full bg-amber-400 px-2 py-1 rounded text-black shadow-box hover:bg-amber-500 max-md:mt-0">Add to list <i class="fa-solid fa-list-ul ml-4"></i></button>
 
                 <div *ngIf="listDisplay == true && myLists.length !== 0" class="max-h-20 overflow-auto my-scrolbar absolute top-14 w-full bg-black/70 max-sm:top-8">
 
@@ -43,11 +43,11 @@
 
         <div class="w-full content-film-info" #contentFilmInfo>
 
-            <div *ngIf="trelerId" class="flex h-96 gap-2 max-md:flex-col">
+            <div *ngIf="trelerId" class="flex h-auto gap-2 max-lg:flex-col max-md:h-full">
 
                 <!-- Постер -->
                  
-                <img alt="title poster" class="w-3/12 max-md:w-96 max-md:hidden" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
+                <img alt="title poster" class="w-3/12 max-md:w-96 max-lg:hidden" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
 
                 <!-- Трейлер -->
 
@@ -61,13 +61,13 @@
                 <img alt="trailer poster" class="w-72 m-auto" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
             </div>
 
-            <div class="max-md:flex gap-2">
+            <div class="max-lg:flex gap-2">
 
                 <!-- пострет при малих розміру екрану -->
 
-                <img alt="title poster" class="w-5/12 hidden pt-5 h-96 max-md:block max-sm:w-32 max-sm:h-52" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
+                <img alt="title poster" class="w-3/12 hidden pt-5 h-full max-sm:hidden max-lg:block" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
 
-                <div class="max-md:w-7/12 max-sm:w-full">
+                <div class=" w-full max-sm:w-full max-md:w-9/12">
 
                     <!-- Інфрмація Час/Тип/Рік -->
 
