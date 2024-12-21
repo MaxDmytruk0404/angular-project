@@ -27,6 +27,7 @@
     "@coreui/coreui": "^5.1.2",
     "@coreui/icons-angular": "~5.1.11",
     "@justinribeiro/lite-youtube": "^1.6.0",
+    "@netlify/angular-runtime": "^2.2.1",
     "@nguniversal/express-engine": "^7.0.2",
     "@popperjs/core": "~2.11.8",
     "angular-highcharts": "^17.0.1",
