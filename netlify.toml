@@ -1,4 +1,10 @@
 [build]
   command = "ng build --configuration=production"
-  function = "nestyfly/function"
+  functions = "netlify/functions"  
   publish = "dist/browser"
+
+[functions]
+  node_bundler = "esbuild"  
+
+[[plugins]]
+  package = "@netlify/angular-runtime"
