@@ -1,5 +1,6 @@
 [build]
   command = "ng build --configuration=production"
+  function = "nestyfly/function"
   publish = "dist/browser"
 
 [[redirects]]
