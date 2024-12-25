@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { RouterLinkActive, RouterOutlet } from '@angular/router';
 import { RouterLink } from '@angular/router';
 
 import { HeaderComponent } from './page-component/header/header.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +12,20 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'ProjectAngular';
 
-  constructor(){}
+  constructor(@Inject(PLATFORM_ID) private platfirmId: any) {}
+
+  ngOnInit(): void {
+
+    if (isPlatformBrowser(this.platfirmId)) {
+
+      console.log("Brovers");
+
+    }
+    
+  }
 
   
 }
