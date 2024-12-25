@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "tailwindcss -i ./src/input.css -o ./src/output.css --watch",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:ProjectAngular": "node dist/server/server.mjs"
