@@ -3,12 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
-import { SearchComponent } from '../../page-component/search/search.component';
 import { FilmsService } from '../../service/films/films.service';
 import { SearchService } from '../../service/search/search.service';
 import { environment } from '../../../environments/environment';
 import { AddToSavedService } from '../../service/add-to-saved/add-to-saved.service';
-import { UpdateSavedStatusService } from '../../service/update-saved-status/update-saved-status.service';
+import { SearchComponent } from '../../ui/home/search/search.component';
+import { MessageService } from '../../service/message/message.service';
 
 @Component({
   selector: 'app-filter-films-catalog',
@@ -41,7 +41,7 @@ export class FilterFilmsCatalogComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private addToSavedService: AddToSavedService,
-    private updateSavedStatusService: UpdateSavedStatusService
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -52,40 +52,16 @@ export class FilterFilmsCatalogComponent implements OnInit {
 
     }
 
-    if (this.userLoadded == 'true') {
-      
-      this.updateSavedStatusService.savedStaus$.subscribe(status => {
-  
-        if (status !== '') {
+    // Повідомлення про помилку або про те що фільм збережений в saves 
     
-          let newStatus = status.includes('already added');
-    
-          if (newStatus) {
-  
-            this.errorMessage = `${status}`;
-    
-            setTimeout(() => {
-              this.errorMessage = '';
-            }, 2800);
-    
-          } else {
-  
-            this.message = `${status} added to Saved`;
-    
-            setTimeout(() => {
-              this.message = '';
-            }, 2800);
-  
-          }
-    
-          setTimeout(() => {
-            this.updateSavedStatusService.resetSavedStatus();
-          }, 3000); 
-  
-        }
-      });
+    this.messageService.messageStaus$.subscribe( (message) => {
+      this.message = message
+    })
 
-    }
+    this.messageService.errorMessageStaus$.subscribe( (errorMessage) => {
+      this.errorMessage = errorMessage
+    })
+
 
     this.route.params.subscribe((params) => {
 

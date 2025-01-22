@@ -42,7 +42,7 @@
                     </div>
                 </div>
 
-                <div class="flex gap-2">
+                <div *ngIf="filmSave" class="flex gap-2">
 
                     <div *ngFor="let film of filmSave.slice(0, sline)" class="relative w-44 h-80 color-text-switching pb-4 color-shadow-switching overflow-hidden bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow cursor-pointer text-center  max-[500px]:h-64 max-[850px]:h-72">
 

@@ -1,0 +1,40 @@
+<ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+
+    <div ngxSlickItem *ngFor="let slide of slidesRecomend"
+      class="text-center m-2 h-96 color-text-switching relative bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow max-[300px]:h-64 max-[750px]:h-80">
+
+      <div [routerLink]="['Information', slide.id]" class="cursor-pointer pt-5 px-2 h-96 overflow-hidden group max-[300px]:h-64 max-[470px]:h-80 max-[750px]:h-80">
+
+        <img src="{{slide.img}}" alt="slide.name" class="m-auto w-auto h-5/6 object-cover group-hover:h-4/6 ease-in-out duration-1000" loading="lazy">
+       
+        <h2 class="p-2 flex-grow max-[300px]:text-sm overflow-hidden text-ellipsis whitespace-nowrap">{{slide.name}}</h2>
+
+        <div class="flex gap-2 flex-wrap justify-center group-hover:translate-y-0 translate-y-28 duration-1000 ease-in-out my-hover-elem max-sm:text-sm max-[300px]:text-sm">
+
+          <p class="border px-2 py-1 rounded border-zinc-400">{{slide.type}}</p>
+          <p class="border px-2 py-1 rounded border-zinc-400">{{slide.year}}</p>
+
+        </div>
+
+      </div>
+
+      <!-- Кнопка зберегти в збережені -->
+
+      <div class="absolute top-0 w-6 right-6 film-save cursor-pointer"
+        (click)="sendFilmInfo(slide)">
+
+        <div class="relative">
+
+          <i
+            class="fa-solid fa-bookmark my-bookmark absolute top-0 size-large-icon text-blue-900 film-save cursor-pointer">
+          </i>
+
+          <i class="fa-solid fa-plus my-plus absolute top-1 text-blue-600 left-3/4"></i>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </ngx-slick-carousel>

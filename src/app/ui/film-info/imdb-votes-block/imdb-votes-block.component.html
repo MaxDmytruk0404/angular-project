@@ -1,0 +1,13 @@
+<div class="flex items-end justify-start h-full relative">
+
+    <div class="absolute top-0 left-0">
+        <h2 class="text-xl">Imdb Votes</h2>
+    </div>
+
+    <div class="absolute top-0 right-0 rounded-full color-component-switching my-shadow w-24 h-24 flex justify-center items-center"> 
+        <i class="fa-solid fa-users text-blue-400 text-4xl"></i>
+    </div>
+
+    <p *ngIf="filmInfo" class="rounded-md text-6xl italic text-blue-400">{{votes}}</p>
+
+</div>

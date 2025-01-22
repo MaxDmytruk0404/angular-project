@@ -86,6 +86,8 @@ export class FilmsSaveComponent implements OnInit {
 
           this.loadding = false;
 
+        } else {
+          this.loadding = false;
         }
 
       });

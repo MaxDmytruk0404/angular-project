@@ -1,118 +1,117 @@
-<div class="my-container pb-2">
+<div class="my-container pb-8 flex flex-col gap-8">
 
-    <div *ngIf="filmInfo">
+    <div *ngIf="filmInfo" class="flex gap-8 max-sm:flex-col">
 
-        <div class="flex justify-between max-md:flex-col max-sm:mb-3">
+        <div class="hidden flex-col gap-2 max-sm:flex">
+                
+            <!-- Назва фільму -->
 
-            <div class="flex flex-col mb-3">
+            <h2 class=" text-3xl font-bold color-text-switching flex gap-2 items-center">
+            {{filmInfo.Title}} 
+            </h2>
 
+            <!-- Оцінювання -->
+
+            <div class="w-52">
+               <app-star-rating [filmId]="filmId" class="cursor-pointer" (onRating)="Handle($event)"></app-star-rating>
+            </div>
+
+        </div>
+
+        <div>
+
+            <img alt="title poster" class="rounded-xl w-64 max-sm:m-auto" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
+
+            <img alt="title poster" class="rounded-xl w-32 max-sm:m-auto" *ngIf="filmInfo.Poster == 'N/A'" src='assets/notFound.webp'>
+
+         <!-- Довавання в Lists -->
+
+         <app-button-add-list></app-button-add-list>
+
+        </div>
+
+        <div class="flex flex-col gap-8 w-full">
+
+            <div class="flex flex-col gap-2 max-sm:hidden">
+                
                 <!-- Назва фільму -->
     
-                <h2 class=" text-3xl font-bold color-text-switching mt-3 flex gap-2 items-center">
-                    {{filmInfo.Title}} <span
-                        class="text-xl font-bold w-20 px-3 py-1 flex justify-center items-center rounded bg-amber-400 shadow-box text-black  max-sm:1/3 max-sm:text-lg">{{filmInfo.imdbRating}}/10</span>
+                <h2 class=" text-3xl font-bold color-text-switching flex gap-2 items-center">
+                {{filmInfo.Title}} 
                 </h2>
-    
+
                 <!-- Оцінювання -->
-    
+
                 <div class="w-52">
-                    <app-star-rating [filmId]="filmId" class="cursor-pointer" (onRating)="Handle($event)"></app-star-rating>
+                   <app-star-rating [filmId]="filmId" class="cursor-pointer" (onRating)="Handle($event)"></app-star-rating>
                 </div>
-    
+
             </div>
 
-            <!-- Довавання в Lists -->
+            <!-- Загальна інформація в мініблоках -->
 
-            <div class="relative w-32 max-md:mb-2">
+            <div class="flex justify-center gap-2 max-sm:flex max-lg:hidden">
 
-                <button *ngIf="userLoadded == 'true'" (click)="handleList()" class="mt-5 w-full bg-amber-400 px-2 py-1 rounded text-black shadow-box hover:bg-amber-500 max-md:mt-0">Add to list <i class="fa-solid fa-list-ul ml-4"></i></button>
+                <app-mini-block class="w-1/3" [paramName]='filmInfo.Runtime'></app-mini-block>
+                <app-mini-block class="w-1/3" [paramName]='filmInfo.Type'></app-mini-block>
+                <app-mini-block class="w-1/3" [paramName]='filmInfo.Year'></app-mini-block>
 
-                <div *ngIf="listDisplay == true && myLists.length !== 0" class="max-h-20 overflow-auto my-scrolbar absolute top-14 w-full bg-black/70 max-sm:top-8">
+            </div>
 
-                    <div *ngFor="let list of myLists" class="bg-amber-400 mt-1 pl-1 relative">
-                        <p>{{list.listName}}</p>
-                        <i *ngIf="list.filmFound == false" (click)="addInList(list)" class="fa-regular fa-circle absolute right-1 text-gray-800 top-1 cursor-pointer"></i>
-                        <i *ngIf="list.filmFound == true" (click)="removeInList(list)"class="fa-regular fa-circle-check absolute right-1 text-gray-800 top-1 cursor-pointer"></i>
-                    </div>
-        
-                </div>
+            <!-- Інфрмація Актори/Автор/Жанр/Історія -->
 
+            <div>
+                <app-block-other-info [Info]="'Actors: ' + filmInfo.Actors"></app-block-other-info>
+                <app-block-other-info [Info]="'Writer: ' + filmInfo.Writer"></app-block-other-info>
+                <app-block-other-info [Info]="'Genre: ' + filmInfo.Genre"></app-block-other-info>
+                <app-block-other-info [Info]="'Plot: ' + filmInfo.Plot"></app-block-other-info>
             </div>
 
         </div>
 
-        <div class="w-full content-film-info" #contentFilmInfo>
+    </div>
 
-            <div *ngIf="trelerId" class="flex h-auto gap-2 max-lg:flex-col max-md:h-full">
+    <div class="flex gap-8 max-[420px]:gap-0 max-lg:flex-wrap">
 
-                <!-- Постер -->
-                 
-                <img alt="title poster" class="w-3/12 max-md:w-96 max-lg:hidden" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
+         <!-- Трейлер -->
 
-                <!-- Трейлер -->
+        <div class="flex gap-8 max-lg:w-full">
 
-                <lite-youtube [attr.videoid]="trelerId"></lite-youtube>
+            <app-trailer></app-trailer>
 
-            </div>
+            <div class="hidden flex-col w-full gap-8 max-sm:hidden max-lg:flex">
 
-            <!-- Постер якщо трейлера немає -->
-
-            <div *ngIf="!trelerId" class="flex gap-2">
-                <img alt="trailer poster" class="w-72 m-auto" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
-            </div>
-
-            <div class="max-lg:flex gap-2">
-
-                <!-- пострет при малих розміру екрану -->
-
-                <img alt="title poster" class="w-3/12 hidden pt-5 h-full max-sm:hidden max-lg:block" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
-
-                <div class=" w-full max-sm:w-full max-md:w-9/12">
-
-                    <!-- Інфрмація Час/Тип/Рік -->
-
-                    <div class="flex justify-center gap-2 my-5">
-                        <div
-                            class="w-1/3 h-12 flex justify-center items-center text-lg uppercase bg-amber-400 shadow-box rounded to-black font-extrabold max-sm:text-sm">
-                            {{filmInfo.Runtime}}</div>
-                        <div
-                            class="w-1/3 h-12 flex justify-center items-center text-lg uppercase bg-amber-400 shadow-box rounded to-black font-extrabold max-sm:text-sm">
-                            {{filmInfo.Type}}</div>
-                        <div
-                            class="w-1/3 h-12 flex justify-center items-center text-lg uppercase bg-amber-400 shadow-box rounded to-black font-extrabold max-sm:text-sm">
-                            {{filmInfo.Year}}</div>
-                    </div>
-
-                    <!-- Інфрмація Актори/Автор/Жанр/Історія -->
-        
-                    <p class="color-text-switching color-component-switching m-1 p-2 paragraf-gradient">Actors:
-                        {{filmInfo.Actors}}</p>
-                    <p class="color-text-switching color-component-switching m-1 p-2 paragraf-gradient">Writer:
-                        {{filmInfo.Writer}}</p>
-                    <p class="color-text-switching color-component-switching m-1 p-2 paragraf-gradient">Genre:
-                        {{filmInfo.Genre}}</p>
-                    <p class="color-text-switching color-component-switching m-1 p-2 paragraf-gradient">Plot: {{filmInfo.Plot}}
-                    </p>
-
-                    <!-- Коментарі -->
-
-                    <app-comentaries></app-comentaries>
-
-                </div>
+                <app-mini-block class="w-full" [paramName]='filmInfo.Type'></app-mini-block>
+                <app-mini-block class="w-full" [paramName]='filmInfo.Runtime'></app-mini-block>
+                <app-mini-block class="w-full" [paramName]='filmInfo.Year'></app-mini-block>
 
             </div>
+        </div>
+
+        <div class="flex gap-8 w-full max-sm:flex-wrap">
+
+            <app-imdb-rating-block class="w-1/2 color-text-switching color-component-switching my-shadow relative rounded-lg bg-cover p-4 max-sm:w-full"></app-imdb-rating-block>
+
+            <app-imdb-votes-block class="w-1/2 color-text-switching color-component-switching my-shadow relative rounded-lg bg-cover p-4 max-sm:w-full max-sm:h-44"></app-imdb-votes-block>
 
         </div>
 
-        <!-- Лоадер -->
-
-        <div *ngIf="loadding" class="loader"></div>
-
     </div>
 
-    <!-- Повідомлення -->
+     <!-- Коментарі -->
 
-    <div *ngIf="message" class="fixed bottom-5 left-1/4 m-auto bg-green-500 w-1/2 p-4 rounded mt-2 flex justify-center">
-        <p class="text-white">{{message}}</p>
-    </div>
+     <app-comentaries class="max-lg:w-full"></app-comentaries>
+
+</div>
+
+<!-- Лоадер -->
+
+<div *ngIf="loadding" class="loader"></div>
+
+
+<!-- Повідомлення -->
+
+<div *ngIf="message" class="fixed bottom-5 left-1/4 m-auto bg-green-500 w-1/2 p-4 rounded mt-2 flex justify-center">
+    <p class="text-white">{{message}}</p>
+</div>
 

@@ -1,12 +1,12 @@
-<div class="px-1">
+<div class="flex flex-col gap-8">
 
     <!-- Блок для введення власного коментарря та його віправки -->
 
-    <div *ngIf="userLoadded == 'true'" class="mt-4 pt-2 border-t border-color-switching">
+    <div *ngIf="userLoadded == 'true'" class="border-t border-color-switching flex flex-col gap-2 pt-8">
 
         <h2 class="color-text-switching text-lg">Add a comment</h2>
 
-        <div class="flex gap-2">
+        <div class="flex gap-8">
 
             <mat-form-field class="w-full h-14">
                 <mat-label>Your comment</mat-label>
@@ -18,11 +18,13 @@
             
         </div>
 
+        <h1 class="color-text-switching">Comentaries: <span *ngIf="comentaries.length !== 0">{{comentaries.length}}</span> <span *ngIf="comentaries.length == 0">0</span></h1>
+
     </div>
 
     <!-- Повідомлення про необхідність зареєструватися щоб відбравити коментар -->
 
-    <div *ngIf="userLoadded == 'false'" class="mt-4 pt-2 border-t border-color-switching">
+    <div *ngIf="userLoadded == 'false'" class="border-t border-color-switching">
 
         <p class="bg-red-600 p-2 text-white">To write a comment you need to <span class="font-black cursor-pointer" routerLink="/Login">login</span> or <span class="font-black cursor-pointer" routerLink="/Registration">register</span>.</p>
 
@@ -30,10 +32,7 @@
 
     <!-- Усі коментарі -->
 
-    <div class="pt-2">
-
-        <h1 class="color-text-switching">Comentaries: <span *ngIf="comentaries.length !== 0">{{comentaries.length}}</span> <span *ngIf="comentaries.length == 0">0</span></h1>
-
+    <div>
 
         <div *ngIf="comentaries.length !== 0" class="max-h-96 overflow-auto my-scrolbar">
 

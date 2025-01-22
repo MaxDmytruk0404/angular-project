@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import { DataOperationService } from '../../service/dataOperation/data-operation.service';
+import { DataOperationService } from '../../../service/dataOperation/data-operation.service';
 
 
 @Component({

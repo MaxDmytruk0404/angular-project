@@ -1,49 +1,27 @@
-<div class="my-container flex gap-10">
+<div class="my-container pb-8">
 
     <div class="w-full">
 
-        <!-- Комнонет для пошуку фільмів -->
+        <!-- Компонет для пошуку фільмів -->
          
         <app-search></app-search>
 
         <!-- Списки фільмів -->
 
         <div *ngIf="receviedFilm"
-            class="w-full flex gap-4 flex-wrap justify-center">
+            class="w-full flex gap-8 flex-wrap justify-center">
 
 
             <!-- Блок з фільмом -->
 
             <div *ngFor="let film of films"
-                class="elative h-auto color-text-switching pb-4 color-shadow-switching overflow-hidden bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow cursor-pointer text-center w-56 max-[375px]:w-10/12 max-[470px]:w-40  max-sm:w-52 max-md:w-72 max-lg:w-64">
+                class="elative h-auto color-text-switching pb-4 color-shadow-switching overflow-hidden bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow cursor-pointer text-center w-56 max-[520px]:w-32">
 
-                <div [routerLink]="['Information', film.imdbID]"
-                    class="cursor-pointer h-96 overflow-hidden group max-sm:h-96 max-[375px]:h-auto max-[470px]:h-80">
-
-                    <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 max-[375px]:w-9/12 max-[375px]:group-hover:w-9/12 max-sm:w-full  max-sm:group-hover:w-11/12 max-md:w-8/12 max-md:group-hover:w-7/12 max-lg:w-10/12 max-lg:group-hover:w-8/12" *ngIf="film.Poster !== 'N/A'" [src]='film.Poster' alt="{{film.Title}}">
-                    
-                    <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 max-[375px]:w-9/12  max-[375px]:group-hover:w-9/12 max-sm:w-full  max-sm:group-hover:w-11/12 max-md:w-8/12 max-md:group-hover:w-7/12 max-lg:w-10/12 max-lg:group-hover:w-8/12" *ngIf="film.Poster == 'N/A'" src='assets/notFound.webp' alt="{{film.Title}}">
-
-                    <h2 class="p-2 flex-grow max-sm:text-sm ">{{film.Title}}</h2>
-
-                    <div class="flex gap-2 flex-wrap justify-center group-hover:translate-y-0 translate-y-28 duration-1000 ease-in-out my-hover-elem max-sm:text-sm">
-                        <p class="border px-2 py-1 rounded border-zinc-400">{{film.Type}}</p>
-                        <p class="border px-2 py-1 rounded border-zinc-400">{{film.Year}}</p>
-                    </div>
-
-                </div>
+                <app-film-block [routerLink]="['Information', film.imdbID]" [film]="film"></app-film-block>
 
                 <!-- Кнопка зберегти в збережені -->
 
-                <div class="absolute top-0 w-6 right-6 film-save cursor-pointer"
-                    (click)="sendInfo(film)">
-                    <div class="relative">
-                        <i
-                            class="fa-solid fa-bookmark my-bookmark absolute top-0 size-large-icon text-blue-900 film-save cursor-pointer">
-                        </i>
-                        <i class="fa-solid fa-plus my-plus absolute text-blue-600 top-1 left-3/4"></i>
-                    </div>
-                </div>
+                <app-button-add-to-save [film]="film" class="absolute top-0 w-6 right-6"></app-button-add-to-save>
 
             </div>
 
@@ -51,7 +29,7 @@
 
         <!-- Переключання між сторінками та пошук сторінки -->
 
-        <div *ngIf="receviedFilm" class="flex gap-2 justify-center mt-4 mb-5 flex-wrap">
+        <div *ngIf="receviedFilm" class="flex gap-8 justify-center mt-8 flex-wrap">
 
             <div class="flex items-center block-border rounded">
                 <p class="color-text-switching ml-2 border-right pr-2">Search by page</p>

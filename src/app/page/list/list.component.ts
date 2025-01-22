@@ -111,6 +111,8 @@ export class ListComponent implements OnInit{
           }
 
 
+        } else {
+          this.loadding = false;
         }
       })
 

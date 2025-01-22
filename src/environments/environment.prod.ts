@@ -2,7 +2,7 @@ export const environment = {
     production: true,
     ApiOMDB: 'https://www.omdbapi.com/',
     ApiTMDB : 'https://api.themoviedb.org/3/',
-    apiHostURL: `https://nestjs-app-production-ff53.up.railway.app/app`,
+    apiHostURL: `https://nestjs-rnrg.onrender.com`,
     firebase: {
         apiKey: "AIzaSyCPtYnBGSS4L8Q6AfLXGJHrFi_yaa9zzWw",
         authDomain: "angularproject-ecfce.firebaseapp.com",

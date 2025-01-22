@@ -1,0 +1,14 @@
+<div class="cursor-pointer h-96 overflow-hidden group max-[520px]:h-72">
+
+     <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2" *ngIf="film.Poster !== 'N/A'" [src]='film.Poster' alt="{{film.Title}}">
+                    
+     <img class="m-auto pt-5 w-11/12 object-cover group-hover:w-9/12 ease-in-out duration-1000 px-2 " *ngIf="film.Poster == 'N/A'" src='assets/notFound.webp' alt="{{film.Title}}">
+
+     <h2 class="p-2 flex-grow max-sm:text-sm ">{{film.Title}}</h2>
+
+     <div class="flex gap-2 flex-wrap justify-center group-hover:translate-y-0 translate-y-28 duration-1000 ease-in-out my-hover-elem max-sm:text-sm">
+         <p class="border px-2 py-1 rounded border-zinc-400">{{film.Type}}</p>
+         <p class="border px-2 py-1 rounded border-zinc-400">{{film.Year}}</p>
+      </div>
+
+ </div>

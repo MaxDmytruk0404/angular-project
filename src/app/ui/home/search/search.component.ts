@@ -1,10 +1,10 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { SearchService } from '../../service/search/search.service';
 import { Router, RouterLink } from '@angular/router';
-import { FilmsService } from '../../service/films/films.service';
 import {MatInputModule} from '@angular/material/input';
+import { SearchService } from '../../../service/search/search.service';
+import { FilmsService } from '../../../service/films/films.service';
 
 
 @Component({

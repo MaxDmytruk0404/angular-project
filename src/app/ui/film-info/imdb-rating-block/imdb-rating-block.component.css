@@ -1,0 +1,22 @@
+@property --rating {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+@property --rating {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+.my-progres-rating {
+  --IMDBrating: 0deg;
+  animation: fillAnimation 2s linear forwards;
+  background: conic-gradient(#60a5fa 0turn var(--rating), #0f172a 0turn);
+}
+
+@keyframes fillAnimation {
+  100% {
+    --rating: var(--IMDBrating);
+  }
+}
+

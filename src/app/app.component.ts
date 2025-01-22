@@ -19,11 +19,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
 
-    if (isPlatformBrowser(this.platfirmId)) {
-
-      console.log("Brovers");
-
-    }
+    if (isPlatformBrowser(this.platfirmId)) {}
     
   }
 

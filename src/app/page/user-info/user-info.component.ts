@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MenuComponent } from '../../page-component/menu/menu.component';
 import { DataOperationService } from '../../service/dataOperation/data-operation.service';
 import { Router, RouterLink } from '@angular/router';
+import { error } from 'node:console';
 
 @Component({
   selector: 'app-user-info',
@@ -105,18 +106,20 @@ export class UserInfoComponent implements OnInit {
       const local = localStorage.getItem('userInfo') || '';
       const userLocal = JSON.parse(local);
 
-      this.dataOperationService.getUserInfo(userLocal.email).subscribe( response => {
-
-        if (response) {
-
-          let userStorageInfo = response;
-          this.filmSave = userStorageInfo.exists.saved;
-
+      this.dataOperationService.getUserInfo(userLocal.email).subscribe(
+        response => {
+          if (response) {
+            let userStorageInfo = response;
+            this.filmSave = userStorageInfo.exists.saved;
+            this.loadding = false;
+          } else {
+            this.loadding = false;
+          }
+        },
+        error => {
           this.loadding = false;
-
         }
-
-      })
+      );
 
     }
 

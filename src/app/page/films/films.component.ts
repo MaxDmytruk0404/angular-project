@@ -3,17 +3,21 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
-import { SearchComponent } from '../../page-component/search/search.component';
+import { SearchComponent } from '../../ui/home/search/search.component';
+import { FilmBlockComponent } from '../../ui/films/film-block/film-block.component';
+
 import { FilmsService } from '../../service/films/films.service';
 import { SearchService } from '../../service/search/search.service';
+
 import { environment } from '../../../environments/environment';
-import { AddToSavedService } from '../../service/add-to-saved/add-to-saved.service';
-import { UpdateSavedStatusService } from '../../service/update-saved-status/update-saved-status.service';
+import { MessageService } from '../../service/message/message.service';
+import { ButtonAddToSaveComponent } from '../../ui/films/button-add-to-save/button-add-to-save.component';
+
 
 @Component({
   selector: 'app-films',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink, SearchComponent],
+  imports: [FormsModule, CommonModule, RouterLink, SearchComponent,FilmBlockComponent, ButtonAddToSaveComponent],
   templateUrl: './films.component.html',
   styleUrl: './films.component.css',
 })
@@ -39,54 +43,20 @@ export class FilmsComponent implements OnInit {
     private filmsServiсe: FilmsService,
     private searchService: SearchService,
     private route: ActivatedRoute,
-    private addToSavedService: AddToSavedService,
-    private updateSavedStatusService: UpdateSavedStatusService
+    private massageService: MessageService
   ) {}
 
   ngOnInit(): void {
 
-    if (typeof window !== 'undefined' && window.localStorage) { 
-
-      this.userLoadded = localStorage.getItem('logged') || 'false';
-
-      if (this.userLoadded == 'true') {
-
-        this.updateSavedStatusService.savedStaus$.subscribe(status => {
-  
-          if (status !== '') {
-      
-            let newStatus = status.includes('already added');
-      
-            if (newStatus) {
+    // Повідомлення про помилку або про те що фільм збережений в saves 
     
-              this.errorMessage = `${status}`;
-      
-              setTimeout(() => {
-                this.errorMessage = '';
-              }, 2800);
-      
-            } else {
-    
-              this.message = `${status} added to Saved`;
-      
-              setTimeout(() => {
-                this.message = '';
-              }, 2800);
-    
-            }
-      
-            setTimeout(() => {
-              this.updateSavedStatusService.resetSavedStatus();
-            }, 3000); 
-    
-          }
+    this.massageService.messageStaus$.subscribe( (message) => {
+      this.message = message
+    })
 
-        });
-
-      }
-
-    }
-    
+    this.massageService.errorMessageStaus$.subscribe( (errorMessage) => {
+      this.errorMessage = errorMessage
+    })
     
 
     this.route.params.subscribe((params) => {
@@ -274,32 +244,6 @@ export class FilmsComponent implements OnInit {
 
     }
     this.enterPageNumber = 1;
-  }
-
-  // Додавання фільму в збережені
-
-  sendInfo(film: any) {
-
-    if (this.userLoadded == 'true') {
-
-      const filmSaveInfo = {
-        poster: film.img,
-        title: film.name,
-        type: film.type,
-        year: film.year,
-        id: film.id,
-      };
-      
-      this.addToSavedService.sendInfo(filmSaveInfo);
-
-    } else {
-      this.errorMessage = `To save the movie you need to log in to your account.`;
-  
-      setTimeout(() => {
-        this.errorMessage = '';
-      }, 2800);
-    }
-
   }
 
 }

@@ -71,6 +71,8 @@ export class ListInfoComponent implements OnInit{
           }
 
 
+        } else {
+          this.loadding = false;
         }
       })
 

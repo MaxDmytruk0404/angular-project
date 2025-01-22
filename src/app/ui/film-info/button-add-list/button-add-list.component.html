@@ -1,0 +1,15 @@
+<div class="relative w-full">
+
+    <button *ngIf="userLoadded == 'true'" (click)="handleList()" class="mt-8 w-full color-component-switching color-text-switching px-2 py-1 rounded my-shadow btn-hover ">Add to list <i class="fa-solid fa-list-ul ml-4"></i></button>
+
+    <div *ngIf="listDisplay == true && myLists.length !== 0" class="max-h-20 overflow-auto my-scrolbar absolute top-14 w-full ">
+
+        <div *ngFor="let list of myLists" class="color-component-switching mt-1 pl-1 relative color-text-switching">
+            <p>{{list.listName}}</p>
+            <i *ngIf="list.filmFound == false" (click)="addInList(list)" class="color-text-switching fa-regular fa-circle absolute right-1 top-1 cursor-pointer"></i>
+            <i *ngIf="list.filmFound == true" (click)="removeInList(list)"class="color-text-switching fa-regular fa-circle-check absolute right-1 top-1 cursor-pointer"></i>
+        </div>
+
+    </div>
+
+</div>

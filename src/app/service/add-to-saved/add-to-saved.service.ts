@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DataOperationService } from '../dataOperation/data-operation.service';
-import { response } from 'express';
-import { UpdateSavedStatusService } from '../update-saved-status/update-saved-status.service';
+import { MessageService } from '../message/message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class AddToSavedService {
   massage: string = '';
   errorMassage: string = '';
 
-  constructor( private dataOperationService: DataOperationService, private updateSavedStatusService: UpdateSavedStatusService) { }
+  constructor( private dataOperationService: DataOperationService, private messageService: MessageService) { }
 
   sendInfo(film:any) {
 
@@ -37,7 +36,13 @@ export class AddToSavedService {
                 if (filmSaved.id == film.id) {
 
                   newFilm = false;
-                  this.updateSavedStatusService.setSavedStatus(`${film.title} already added `);
+                  // this.updateSavedStatusService.setSavedStatus(`${film.title} already added `);
+                  this.messageService.setErrorMesageStatus(`${film.title} already added `);
+
+                  setTimeout(() => {
+                    this.messageService.resetErrorMessageStatus()
+                  }, 2800);
+
                   return
 
                 }
@@ -56,7 +61,12 @@ export class AddToSavedService {
                 userStorageInfo.exists.saved.push(filmInfo);
                 this.dataOperationService.updateData(userStorageInfo.exists.email, userStorageInfo.exists).subscribe((response) => {});
 
-                this.updateSavedStatusService.setSavedStatus(film.title);
+                // this.updateSavedStatusService.setSavedStatus(film.title);
+                this.messageService.setMesageStatus(`${film.title} add to Save`);
+
+                setTimeout(() => {
+                  this.messageService.resetMessageStatus()
+                }, 2800);
 
               }
 
@@ -73,7 +83,12 @@ export class AddToSavedService {
               ];
       
               this.dataOperationService.updateData(userStorageInfo.exists.email, userStorageInfo.exists).subscribe((response) => {});
-              this.updateSavedStatusService.setSavedStatus(film.title);
+              // this.updateSavedStatusService.setSavedStatus(film.title);
+              this.messageService.setMesageStatus(`${film.title} add to Save`);
+
+              setTimeout(() => {
+                this.messageService.resetMessageStatus()
+              }, 2800);
 
             }
           }
